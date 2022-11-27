@@ -1,5 +1,9 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import {Link} from "react-router-dom";
+
+import { Keyframes } from 'styled-components';
+
+
 
 export const Nav=styled.div`
 box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -11,6 +15,14 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     align-items: center;
     color:white;
     background-color: #1f1d1d;
+    position: fixed;
+    top:0px;
+    width:100%;
+    @media all  and (max-width:1024px) and (min-width:279px){
+      width:100%;
+      height:60px;
+      margin:auto;
+    }
 `
 
 export const NavLink=styled(Link)`
@@ -28,8 +40,11 @@ export const Button=styled.button`
 `
 
 export const LeftWrapper=styled.div`
-  margin-left:50px;
-
+  margin-left:5%;
+  .logo{
+    font-size:35px;
+    color:gray;
+  }
 `
 
 export const RightWrapper=styled.div`
@@ -40,4 +55,27 @@ export const RightWrapper=styled.div`
   align-items : center;
   justify-content :space-evenly ;
   width:500px;
+  @media all  and (max-width:1024px) and (min-width:279px){
+    flex-direction: column;
+    position:fixed;
+    background-color: gray;
+    right:${({open})=>open?"-29px" : "-24rem"};
+    top:63px;
+    width:200px;
+    height:70%;
+    transition:all 650ms ease-in-out;
+    z-index:1999;
+  }
 `
+
+export const HamWrapper=styled.div`
+  font-size:35px;
+  display:none;
+
+  @media all  and (max-width:1024px) and (min-width:279px){
+     display:inline-block;
+     margin-right:6%;
+
+  }
+`
+

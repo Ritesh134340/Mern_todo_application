@@ -1,17 +1,19 @@
-import React from "react";
-import { Button, LeftWrapper, Nav, RightWrapper } from "../styles/navbar.style";
+import React,{useState} from "react";
+import { Button, HamWrapper, LeftWrapper, Nav, RightWrapper } from "../styles/navbar.style";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../Redux/AuthReducer/action";
 import { NavLink } from "../styles/navbar.style";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {GiHamburgerMenu} from "react-icons/gi"
+import {SiTodoist} from "react-icons/si"
 const Navbar = () => {
   const User=JSON.parse(localStorage.getItem("profile")) || ""
   const token=User.token || "" 
   const first_name=User.name
   const last_name=User.title
-  
+  const [isOpen,setIsOpen]=useState(false)
   const navigate = useNavigate();
   const { isAuth } = useSelector((state) => {
     return { isAuth: state.AuthReducer.isAuth };
@@ -37,14 +39,15 @@ const Navbar = () => {
       },2200)
   
   };
+
   return (
     <>
     <Nav>
       <LeftWrapper>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/"><SiTodoist className="logo"/></NavLink>
       </LeftWrapper>
 
-      <RightWrapper>
+      <RightWrapper open={isOpen}>
       <NavLink to="todos/all">All Todos</NavLink>
       <NavLink to="/profile">Profile</NavLink>
        {isAuth || token ? <h5>Welcome {first_name} {last_name} </h5> : ""}
@@ -57,7 +60,10 @@ const Navbar = () => {
         )}
         
       </RightWrapper>
-    
+      <HamWrapper >
+      <GiHamburgerMenu onClick={()=>setIsOpen(!isOpen)}/>
+      </HamWrapper>
+   
     </Nav>
       < ToastContainer/>
     </>

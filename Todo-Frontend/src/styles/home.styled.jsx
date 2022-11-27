@@ -32,5 +32,10 @@ export const MainHomeDiv=styled.div`
     width:100vw;
     background-position:center;
      background-image:url("https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHRleHR1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+     @media all  and (max-width:1024px) and (min-width:279px){
+        width:100%;
+        border:1px solid transparent;
+        margin:auto;
+     }
   
 `

@@ -100,9 +100,12 @@ const EditTodo = () => {
           <h5 className="status-heading"> {status ? "Done" : "Not Done"}</h5>
           </form>
            </div>}
+           <div className="button-div">
+
+         
            <button onClickCapture={(e)=>e.preventDefault()} onClick={()=>setStatus(!status)} className="edit-button" id="toggle-button" disabled={!show? true:false}>Toggle Status</button>
           <button onClick={handleUpdate}  className="edit-button" id="edit-button-show">{!show? "Edit" : "Save Changes"}</button>
-
+          </div>
         </div>
         <ToastContainer/>
        </EditTodoWrapper>

@@ -2,16 +2,16 @@
 
 import Navbar from "./components/Navbar";
 import AllRoutes from "./pages/AllRoutes";
+import { AppWrapper } from "./styles/app.styled";
 
 
 function App() {
   return (
-    <div>
-        <Navbar/>
+      <AppWrapper>
+      <Navbar/>
         <AllRoutes/>
-     
-    </div>
-  
+      </AppWrapper>
+ 
   );
 }
 

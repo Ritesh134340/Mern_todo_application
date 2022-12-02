@@ -17,7 +17,7 @@ const TodoList = ({data,handleDelete}) => {
   return (
        <TodoListWrapper>
       
-       <table>
+       <table className="big">
         <thead>
         <tr>
          <th>Title</th>
@@ -45,8 +45,6 @@ const TodoList = ({data,handleDelete}) => {
             
              </tr>
              
-          
-            
             )}
            
         
@@ -54,6 +52,54 @@ const TodoList = ({data,handleDelete}) => {
      
          
       </table>
+
+
+
+      <div className="small">
+         <div className="head">
+          <div className="heading">
+          <h3>TASK</h3>
+          <h3>STATUS</h3>
+          </div>
+          
+         </div>
+
+         <div>
+         
+            {data && data.map((ele)=>
+             <div key={ele._id}  >
+             <div className="small-title">
+             <h3 className="small-list-title">{ele.title}</h3>
+             
+             <h3>{!ele.status ? <MdPendingActions id="small-task-pending"/> :<BiTask id="small-task-done"/>}</h3>
+             </div>
+
+              <div  className="small-button">
+               
+                <button id="small-list-update-button"><Link id="small-update-link"  to={`/todo/edit/${ele._id}`}>Update</Link></button>
+             <button id="small-list-delete-button" onClick={()=>handleDelete(ele._id)}>Delete</button>
+              
+              
+              </div>
+          
+             </div>
+             
+            )}
+           
+        
+         </div>
+     
+         
+      </div>
+
+
+
+
+
+
+
+
+
       </TodoListWrapper>
     
   )

@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const EditTodoWrapper=styled.div`
-     
-     margin-top:80px;
- 
-
+     margin-top:100px;
+    
     .main-edit-div{
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         width:500px;
@@ -15,19 +13,17 @@ export const EditTodoWrapper=styled.div`
         padding-top:20px;
         border-radius:13px;
     }
+   
     .edit-form{
       padding-left:20px;
+  
     }
     #toggle-button{
        background-color: ${({status,show})=>status ? "rgb(15,165,77)" : !show? "rgb(196,196,196)":"red"};
        color:white;
     }
     
-    .form-div{
-     
-      
-
-    }
+    
     .editTitle{
         font-size:25px;
         font-family:"Roboto",sans-serif;
@@ -77,6 +73,50 @@ export const EditTodoWrapper=styled.div`
 } ;
         color:white;
 
+    }
+
+    @media all and (max-width:1024px) and (min-width:279px){
+        .main-edit-div{
+         width:93%;
+        margin:auto;
+        margin-top:35px;
+       padding-left:-20px;
+       
+        }
+        input{
+            height:40px;
+           width:90%;
+      
+        font-size:16px;
+        padding-left:-10px;
+        margin-top:5px;
+        margin-bottom:10px;
+        border-radius:8px;
+        outline:none;
+        border:1px solid gray;  
+        }
+
+        .edit-div{
+       margin:auto;
+     
+    }
+      .edit-form{
+       margin:auto;
+     
+      }
+      .edit-button{
+        margin:auto;
+        margin-top:10px;
+        margin-left:6px;
+      }
+      .editTitle{
+    
+      }
+      .button-div{
+      
+       
+
+      }
     }
     
 `

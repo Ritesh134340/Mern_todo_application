@@ -20,6 +20,7 @@ const Navbar = () => {
   });
   const dispatch = useDispatch();
   const handleLogOut = () => {
+    setIsOpen(!isOpen)
     dispatch(logout());
     const profile = "";
     localStorage.setItem("profile", JSON.stringify(profile));
@@ -48,20 +49,24 @@ const Navbar = () => {
       </LeftWrapper>
 
       <RightWrapper open={isOpen}>
-      <NavLink to="todos/all">All Todos</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
-       {isAuth || token ? <h5>Welcome {first_name} {last_name} </h5> : ""}
+      
+        <NavLink to="todos/all"  onClick={()=>setIsOpen(!isOpen)}id="first">TODOS</NavLink>
+      <NavLink to="/profile" onClick={()=>setIsOpen(!isOpen)}id="second">PROFILE</NavLink>
+       {isAuth || token ? <div id="third" className="name-with-img"><img id="sixth"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" alt="" />
+       <h5>{first_name} {last_name}</h5> </div> : ""}
         {isAuth || token ? (
-          <Button onClick={handleLogOut}>Log Out</Button>
+          <Button onClick={handleLogOut} id="forth">LOG OUT</Button>
         ) : (
-          <Button>
-            <NavLink to="/login">Log In</NavLink>
+          <Button id="forth">
+            <NavLink to="/login" onClick={()=>setIsOpen(!isOpen)}>LOG IN</NavLink>
           </Button>
         )}
+
         
+     
       </RightWrapper>
       <HamWrapper >
-      <GiHamburgerMenu onClick={()=>setIsOpen(!isOpen)}/>
+         {isOpen?<div className="cross" onClick={()=>setIsOpen(!isOpen)}>&times;</div> : <GiHamburgerMenu onClick={()=>setIsOpen(!isOpen)}/>}
       </HamWrapper>
    
     </Nav>

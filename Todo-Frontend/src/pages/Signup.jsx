@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link,useNavigate} from "react-router-dom"
-import { HeadingWrapper, InputWrapper, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
+import { HeadingWrapper, InputWrapper, MainDiv, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
 import { useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import {signup} from "../Redux/AuthReducer/action"
@@ -60,17 +60,23 @@ const Signup = () => {
         {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
        
         <HeadingWrapper><h1>Sign Up</h1></HeadingWrapper>
+           
+         <MainDiv>
+       
+         <div className='hero-image'>
+          <img src="" alt="" />
+         </div>
          <form onSubmit={handleSubmit}>
           <InputWrapper>
          
           <label>First Name</label><br/>
-           <input value={name} type="text" onChange={(e)=>setName(e.target.value)}></input>
+           <input value={name} type="text" onChange={(e)=>setName(e.target.value)}></input><br/>
            <label>Last Name</label><br/>
-           <input value={last} type="text" onChange={(e)=>setLast(e.target.value)}></input>
+           <input value={last} type="text" onChange={(e)=>setLast(e.target.value)}></input><br/>
            <label>Email</label><br/>
-           <input value={email} type="text" onChange={(e)=>setEmail(e.target.value)}></input>
+           <input value={email} type="text" onChange={(e)=>setEmail(e.target.value)}></input><br/>
            <label>Password</label><br/>
-           <input value={password}  type="text" onChange={(e)=>setPassword(e.target.value)}></input>
+           <input value={password}  type="text" onChange={(e)=>setPassword(e.target.value)}></input><br/>
            <SubmitWrapper>
            <input type="submit"></input>
            </SubmitWrapper>
@@ -78,7 +84,12 @@ const Signup = () => {
           </InputWrapper>
           
          </form>
-         <h5>Already have an account ?<NavLink to="/login">Sign In</NavLink></h5>
+         <h5>Already have an account ?<NavLink to="/login">Sign In</NavLink></h5> 
+
+         </MainDiv>
+
+
+
          <ToastContainer/>
       </SignupWrapper>}
 

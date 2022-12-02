@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {Link,useNavigate} from "react-router-dom"
-import { HeadingWrapper, InputWrapper, MainDiv, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
+import { HeadingWrapper, SignupImage , InputWrapper, MainDiv, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
 import { useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import {signup} from "../Redux/AuthReducer/action"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PreviewImage from '../components/PreviewImage'
+
 
 const Signup = () => {
   const dispatch=useDispatch();
@@ -14,14 +16,18 @@ const Signup = () => {
   const [last,setLast]=useState("")
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const ImageRef=useRef(null)
+  const [image,setImage]=useState(null)
 
   const {isError,isLoading}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading}})
 
 
- 
+  const handleUpload=()=>{
+       ImageRef.current.click()
+  }
 
   const handleSubmit=(e)=>{
-    
+     
     const payload={
       first_name:name,
       last_name:last,
@@ -63,9 +69,16 @@ const Signup = () => {
            
          <MainDiv>
        
-         <div className='hero-image'>
-          <img src="" alt="" />
-         </div>
+         <SignupImage>
+          <input type="file" hidden ref={ImageRef} onChange={(e)=>setImage(e.target.files[0])}/>
+
+          <div onClick={handleUpload}>
+              {image? <PreviewImage file={image}/> : <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" alt="Profile" />}
+         
+          </div>
+          
+         </SignupImage>
+
          <form onSubmit={handleSubmit}>
           <InputWrapper>
          

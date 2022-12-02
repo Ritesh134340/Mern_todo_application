@@ -7,6 +7,7 @@ export const SignupWrapper=styled.div`
     padding:20px;
     margin:auto;
     margin-top:50px;
+    margin-bottom:80px;
     border-radius:13px;
     border:1px solid black;
 
@@ -70,4 +71,20 @@ export const MainDiv=styled.div`
         text-decoration:none;
     }
     
+`
+
+export const SignupImage=styled.div`
+    width:100%;
+    text-align: center;
+    margin-bottom:20px;
+
+  img{
+     width:80px;
+     height:80px;
+     border-radius:50%;
+  }  
+  button{
+    border:1px solid transparent;
+    background-color: transparent;
+  } 
 `

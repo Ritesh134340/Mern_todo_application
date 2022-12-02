@@ -6,7 +6,7 @@ import {
   LoginWrapper,
 } from "../styles/login.style";
 import { SubmitWrapper } from "../styles/login.style";
-import { NavLink } from "../styles/signup.style";
+import { MainDiv, NavLink, } from "../styles/login.style";
 import {login} from "../Redux/AuthReducer/action"
 import { useDispatch,useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
@@ -90,6 +90,7 @@ const Login = () => {
       <HeadingWrapper>
         <h1>Sign In</h1>
       </HeadingWrapper>
+      <MainDiv>
       <form onSubmit={handleSubmit}>
         <InputWrapper>
           <label>Email</label>
@@ -105,6 +106,7 @@ const Login = () => {
         
         </InputWrapper>
       </form>
+      </MainDiv>
       <h5>Don't have an account ?<NavLink to="/signup">Sign Up</NavLink></h5>
       <ToastContainer/>
     </LoginWrapper>

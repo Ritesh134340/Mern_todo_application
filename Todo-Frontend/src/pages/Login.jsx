@@ -37,13 +37,14 @@ const Login = () => {
         const first_name=res.payload.name
         const last_name=res.payload.title
         const user_email=res.payload.email
-         
+        const user_image=res.payload.image
 
         const data={
            name:first_name,
            title:last_name,
            email:user_email,
-           token:user_token
+           token:user_token,
+           image:user_image
         }
 
         localStorage.setItem("profile",JSON.stringify(data))

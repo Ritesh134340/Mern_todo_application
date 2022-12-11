@@ -4,10 +4,10 @@ const {REACT_APP_URL}=process.env
 
 
 
-const signup=(payload)=>(dispatch)=>{
+const signup=({formData,config})=>(dispatch)=>{
     dispatch({type:types.SIGNUP_REQUEST});
    
-    return  axios.post(`${REACT_APP_URL}/user/signup`,payload).then((res)=>{
+    return  axios.post(`${REACT_APP_URL}/user/signup`,formData,config).then((res)=>{
       
    return dispatch({type:types.SIGNUP_SUCCESS,payload:res})
 

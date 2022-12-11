@@ -9,10 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import {GiHamburgerMenu} from "react-icons/gi"
 import {SiTodoist} from "react-icons/si"
 const Navbar = () => {
+  const {REACT_APP_URL}=process.env
   const User=JSON.parse(localStorage.getItem("profile")) || ""
   const token=User.token || "" 
   const first_name=User.name
   const last_name=User.title
+  const user_image=User.image
   const [isOpen,setIsOpen]=useState(false)
   const navigate = useNavigate();
   const { isAuth } = useSelector((state) => {
@@ -41,6 +43,7 @@ const Navbar = () => {
   
   };
 
+
   return (
     <>
     <Nav>
@@ -52,7 +55,7 @@ const Navbar = () => {
       
         <NavLink to="todos/all"  onClick={()=>setIsOpen(!isOpen)}id="first">TODOS</NavLink>
       <NavLink to="/profile" onClick={()=>setIsOpen(!isOpen)}id="second">PROFILE</NavLink>
-       {isAuth || token ? <div id="third" className="name-with-img"><img id="sixth"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" alt="" />
+       {isAuth || token ? <div id="third" className="name-with-img"><img id="sixth"  src={user_image? `${REACT_APP_URL}${user_image}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" }alt="" />
        <h5>{first_name} {last_name}</h5> </div> : ""}
         {isAuth || token ? (
           <Button onClick={handleLogOut} id="forth">LOG OUT</Button>

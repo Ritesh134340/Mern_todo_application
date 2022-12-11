@@ -1,0 +1,68 @@
+.filterWrapper{
+     width:100%;
+
+    margin-top:40px;
+}
+.filter-main-div{
+    display:flex;
+    justify-content: space-evenly;
+   padding-top:20px;
+ 
+    width:95%;
+    margin:auto;
+}
+.filterStatus-div{
+  
+}
+.filterStatus-div>h3{
+    margin-bottom:15px;
+    font-size:16px;
+    font-weight: 700;
+}
+.filterStatus-div>label{
+    font-weight: bold;
+    font-size:13px;
+}
+.filterStatus-div>input{
+    margin-left:5px;
+    margin-right:10px;
+    margin-bottom:12px; 
+ 
+}
+.filterCategory-div{
+
+   
+}
+.filterCategory-div>h3{
+    margin-bottom:15px;
+    font-size:16px;
+    font-weight: 700;
+}
+.filterCategory-div>label{
+    font-weight: bold;
+    font-size:13px;
+
+}
+.filterCategory-div>input{
+    margin-left:5px;
+    margin-right:10px;
+    margin-bottom:12px;
+}
+.sort-div{
+
+}
+.sort-div>h3{
+    margin-bottom:15px;
+    font-size:16px;
+    font-weight: 700;
+    }
+    .sort-div>input{
+        margin-left:5px;
+        margin-right:10px;
+        margin-bottom:12px;
+        }
+        .sort-div>label{
+            font-weight: bold;
+            font-size:13px;
+        
+            }

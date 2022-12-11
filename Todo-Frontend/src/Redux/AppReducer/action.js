@@ -4,16 +4,17 @@ const {REACT_APP_URL}=process.env
 
 const getTodos=(payload)=>(dispatch)=>{
     dispatch({type:types.GET_REQUEST});
-   return  axios.get(`${REACT_APP_URL}/todo`,{headers:payload}).then((res)=>{
+   return  axios.get(`${REACT_APP_URL}/todo`,payload).then((res)=>{
      return   dispatch({type:types.GET_SUCCESSFUL,payload:res.data})
     }).catch((err)=>{
         dispatch({type:types.GET_FAILURE,payload:err})
     })
 }
 
-const createTodos=(payload)=>(dispatch)=>{
+const createTodos=(payload,header)=>(dispatch)=>{
+   
     dispatch({type:types.CREATE_REQUEST});
-   return  axios.post(`${REACT_APP_URL}/todo/create`,{title:payload.title},{headers:payload.data}).then((res)=>{
+   return  axios.post(`${REACT_APP_URL}/todo/create`,payload,{headers:header.data}).then((res)=>{
        return  dispatch({type:types.CREATE_SUCCESSFUL,payload:res.data})
     }).catch((err)=>{
         dispatch({type:types.CREATE_FAILURE,payload:err})

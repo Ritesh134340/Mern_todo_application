@@ -63,6 +63,8 @@ export const MainDiv=styled.div`
        margin-bottom:10px;
        border:1px solid black;
        border-radius: 7px;
+       padding-left:15px;
+       font-size:17px;
     }
   
     h5{

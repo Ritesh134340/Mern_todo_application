@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef,useEffect } from 'react'
 import {Link,useNavigate} from "react-router-dom"
 import { HeadingWrapper, SignupImage , InputWrapper, MainDiv, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
 import { useState } from 'react'
@@ -8,7 +8,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PreviewImage from '../components/PreviewImage'
 
-
 const Signup = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate()
@@ -17,9 +16,20 @@ const Signup = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const ImageRef=useRef(null)
-  const [image,setImage]=useState(null)
+  const [image,setImage]=useState("")
+  
+  useEffect(()=>{
+     fetch("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU").then((res)=>{
+      return res.blob();
+     }).then(blob=>{
+      const file=new File([blob],'user_profile.png',{type:blob.type})
+      setImage(file) 
+     })
+  },[])
 
-  const {isError,isLoading}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading}})
+  
+
+  const {isLoading}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading}})
 
 
   const handleUpload=()=>{
@@ -27,16 +37,24 @@ const Signup = () => {
   }
 
   const handleSubmit=(e)=>{
-     
-    const payload={
-      first_name:name,
-      last_name:last,
-      email:email,
-      password:password
-    }
     e.preventDefault();
+    const formData=new FormData()
+    if(image!==""){
+      formData.append("image",image)
+    }
+    formData.append("first_name",name)
+    formData.append("last_name",last)
+    formData.append("email",email)
+    formData.append("password",password)
+
+    const config = {     
+      headers: { 'content-type': 'multipart/form-data' }
+  }
+
+  
     if(name && last && email && password){
-       dispatch(signup(payload)).then((res)=>{
+      
+       dispatch(signup({formData,config})).then((res)=>{
         let resp=(res.payload.data.mesg)
         toast.success(resp,{
           position: "top-center",
@@ -56,32 +74,29 @@ const Signup = () => {
         console.log(err)
        })
     }
-
   }
+
 
   return (
          <div>
-
+         
         
         {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
        
         <HeadingWrapper><h1>Sign Up</h1></HeadingWrapper>
-           
+         
          <MainDiv>
        
          <SignupImage>
-          <input type="file" hidden ref={ImageRef} onChange={(e)=>setImage(e.target.files[0])}/>
-
           <div onClick={handleUpload}>
-              {image? <PreviewImage file={image}/> : <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" alt="Profile" />}
-         
+             {image!=="" && <PreviewImage file={image}/>} 
           </div>
-          
+
          </SignupImage>
 
          <form onSubmit={handleSubmit}>
           <InputWrapper>
-         
+         <input type="file" hidden ref={ImageRef} onChange={(e)=>setImage(e.target.files[0])}/>
           <label>First Name</label><br/>
            <input value={name} type="text" onChange={(e)=>setName(e.target.value)}></input><br/>
            <label>Last Name</label><br/>
@@ -95,8 +110,9 @@ const Signup = () => {
            </SubmitWrapper>
            
           </InputWrapper>
-          
+           
          </form>
+       
          <h5>Already have an account ?<NavLink to="/login">Sign In</NavLink></h5> 
 
          </MainDiv>

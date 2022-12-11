@@ -3,17 +3,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const PreviewImage = ({file}) => {
-  
     const [preview,setPreview]=useState(null)
     const reader=new FileReader();
+
     useEffect(()=>{
-        if(file.type==="image/jpeg"){
+       
+        if(file.type==="image/jpeg" || file.type==="image/png" || file.type==="image/jpg"){
             reader.readAsDataURL(file)
             reader.onload=()=>{
                 setPreview(reader.result)
             }
         }
-        else{
+        else if(file.type!=="image/jpeg" || file.type!=="image/png" || file.type!=="image/jpg"){
+    
             toast.error("Unsupported file format",{
                 position: "top-center",
                 autoClose: 2000,
@@ -30,11 +32,8 @@ const PreviewImage = ({file}) => {
    
   return (
     <>
-      <div>
-      {  preview? <img src={preview} alt="Preview"  /> :  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU" alt="Profile" />}
-     
-    </div>
-    <ToastContainer/>
+      <div><img src={preview} alt="Preview"/> </div>
+      <ToastContainer/>
     </>
   
   )

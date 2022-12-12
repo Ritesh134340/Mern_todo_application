@@ -1,8 +1,8 @@
 const mongoose=require("mongoose");
 
 const todoSchema=new mongoose.Schema({
-    user_id:String,
-    title:String,
+    user_id:{type:String,required:true},
+    title:{type:String,required:true},
     subtask:{type:Array,default:["No subtask added."]},
     status:{type:String,default:"pending"},
     category:{type:String,default:"others"},

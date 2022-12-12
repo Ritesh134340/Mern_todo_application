@@ -28,7 +28,7 @@ todo.get("/",authentication,async(req,res)=>{
       }
       else {
         const data = await Todo.find({user_id:user_id}).sort({date:Order});
-        console.log(data)
+  
         res.send({"todos":data})
        }
      

@@ -28,6 +28,7 @@ todo.get("/",authentication,async(req,res)=>{
       }
       else {
         const data = await Todo.find({user_id:user_id}).sort({date:Order});
+        console.log(data)
         res.send({"todos":data})
        }
      
@@ -54,13 +55,16 @@ todo.post("/create",authentication,async(req,res)=>{
    
 
     const {user_id,title,subtask,status,category,description}=req.body
+      
+         
+    try{
         let date=(new Date())
-            date=date.toDateString()
+        date=date.toDateString()
 
         let time=new Date()   
         time=(time.toTimeString().split(" ")[0])
-         
-    try{
+
+
         const new_todo=new Todo({user_id:user_id,
             title:title,
             subtask:subtask,

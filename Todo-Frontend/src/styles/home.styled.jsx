@@ -84,6 +84,9 @@ export const MainHomeDiv=styled.div`
         text-align: center;
         margin-top:35px;
      }
+     @media all and (max-width:1024px) and (min-width:279px){
+      width:88%
+     }
 `
 export const HomeTopDiv=styled.div`
     display:flex;
@@ -134,23 +137,33 @@ export const HomeTopDiv=styled.div`
         padding:15px;
         font-size:17px;
         font-weight:400;
+        resize: vertical;
       }
     }
     .common-addtask{
         padding:25px;
         width:33%;
-
-    height:auto;
         box-sizing: border-box;
 
-    
+     .task-del{
+      padding:4px 14px;
+
+     }
         @media all and (max-width:1024px) and (min-width:270px){
             width:100%;
             padding:0px;
             height:auto;
-            .sub-holder{
-                height:50px;
-            }
+            position: relative;
+        
+              .sub-holder{
+           
+         
+         margin-bottom:20px;
+         height:50px;
+         position:absolute;
+         left:0.5%;
+         right:0.5%;
+      }
         }
      input{
         width:100%;
@@ -159,16 +172,11 @@ export const HomeTopDiv=styled.div`
         margin-bottom:13px;
         border:1px solid gray;
      }
-    
-     button{
-        padding:6px 25px;
-        border-radius: 6px;
-        background-color: transparent;
-     }
+  
 
      .sub-holder{
-     
-        height:200px;
+        
+        max-height: 150px;
         overflow: scroll;
         overflow-x: hidden;
         width:100%;
@@ -178,22 +186,23 @@ export const HomeTopDiv=styled.div`
      .del-btn{
         user-select: none;
         display:flex;
+      
         width:100%;
         padding:5px;
         justify-content: space-between;
         align-items: center;
-        height:30px;
+        height:33px;
         margin-bottom:10px;
       button{
      
         border-radius:4px;
-        padding:2px 5px;
-        border:1px solid transparent;
+        padding:5px 15px;
+       
       }
      }
     }
 .common-date{
-
+  
     padding:25px;
     height:auto;
     width:33%;
@@ -208,7 +217,7 @@ export const HomeTopDiv=styled.div`
         }
         .date-holder{
           display:none;
-    
+       
     }
    }
     .date-holder{
@@ -218,6 +227,7 @@ export const HomeTopDiv=styled.div`
     
     }
     .btn-holder{
+          
             padding:10px 25px;
             border-radius:5px;
             background-color:transparent;
@@ -234,9 +244,7 @@ export const HomeTopDiv=styled.div`
 export const HomeBottomDiv=styled.div`
     width:100%;
     margin-top:10px;
-    @media all and (max-width:1024px) and (min-width:279px){
-       
-    }
+    
    
     .checkWrapper{
 
@@ -265,5 +273,10 @@ export const HomeBottomDiv=styled.div`
         font-size:16px;
         font-weight:bold;
        }
+       @media all  and (max-width:281px){
+       label{
+        font-size:12px
+       }
+    }
     }
 `

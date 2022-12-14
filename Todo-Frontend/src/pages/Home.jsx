@@ -34,7 +34,7 @@ const Home = () => {
        
        
     }
-    if(todoTitle && status && category && description){
+    if(todoTitle){
       dispatch(createTodos(payload,header)).then((res)=>{
         setTodoTitle("")
         setDescription("")
@@ -99,6 +99,9 @@ const Home = () => {
   }
 
 
+
+
+
  
   return (
     <HomeWrapper>
@@ -139,7 +142,7 @@ const Home = () => {
 
               <div className="common-addtask" >
                 <input type="text" placeholder='Create Subtask..' onChange={(e)=>setSubValue(e.target.value)} /><br />
-                <button onClick={handleAddSub}>ADD</button>
+                <button className="task-del" onClick={handleAddSub}>Add Subtask</button>
                  <div className="sub-holder">
                   {
                     subTask && subTask.map((ele,index)=>

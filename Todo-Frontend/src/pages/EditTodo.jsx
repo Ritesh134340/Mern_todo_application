@@ -39,7 +39,7 @@ const EditTodo = () => {
       id:id
      }
      dispatch(updateTodos(payload)).then((res)=>{
-      //  console.log(res.payload)
+  
        const id=params.id;
   const payload={
    data:{Authorization:`Bearer ${token}`},

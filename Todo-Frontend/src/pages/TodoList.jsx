@@ -1,105 +1,67 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect,useRef, useState} from 'react'
+import {RiArrowDropDownLine} from "react-icons/ri";
+import {RiArrowDropUpLine} from "react-icons/ri"
 import { TodoListWrapper } from '../styles/todolist.style';
-import {FaEdit} from "react-icons/fa"
-import {useParams,Link} from "react-router-dom"
-import { NavLink } from '../styles/signup.style';
-import { getTodos } from '../Redux/AppReducer/action';
-import { useDispatch } from 'react-redux';
-import {MdPendingActions} from "react-icons/md"
-import {BiTask} from "react-icons/bi"
+import {Link} from "react-router-dom"
 
 const TodoList = ({data,handleDelete}) => {
- 
-  const User=JSON.parse(localStorage.getItem("profile")) || ""
+  const [activeId,setActiveId]=useState(null)
+
+  const onTitleClick = (id) => {
+    setActiveId(id)
+ };
+
   
-  console.log(data)
   return (
        <TodoListWrapper>
-      
-       <table className="big">
-        <thead>
-        <tr>
-         <th>Title</th>
-         <th>Time</th>
-         <th>Date</th>
-         <th>Status</th>
-       
-       </tr>
-        </thead>
-
-         <tbody>
-         
-            {data && data.map((ele)=>
-             
-             <tr key={ele._id} >
-             <td className="list-title">{ele.title}</td>
-             <td>{ele.time}</td>
-             <td>{ele.date}</td>
-             <td>{!ele.status ? <MdPendingActions id="task-pending"/> :<BiTask id="task-done"/>}</td>
-             <td>
-             <button id="list-update-button"><Link id="update-link"  to={`/todo/edit/${ele._id}`}>Update</Link></button>
-             <button id="list-delete-button" onClick={()=>handleDelete(ele._id)}>Delete</button>
-
-             </td>
-            
-             </tr>
-             
-            )}
-           
-        
-         </tbody>
-     
-         
-      </table>
+        <div className="main-div">
+          {
+            data && data.map((ele,index)=>{
+               return  <div  key ={ele._id} className="card-div">
+                  
+                        <div>
+                          <h3>{ele.status.toUpperCase()}</h3>
+                          <div><h5>{ele.date}</h5> <h5>{ele.time}</h5>
+                         </div>
 
 
+                        </div>
+                        <div className="mid-div">
+                        <label>TITLE</label>
+                         <h4>{ele.title}</h4>
+                         <label >CATEGORY</label>
+                         <h4>{ele.category}</h4>
 
-      <div className="small">
-         <div className="head">
-          <div className="heading">
-          <h3>TASK</h3>
-          <h3>STATUS</h3>
-          </div>
-          
-         </div>
+                         <div className="sub-div" >
+                         <label >SUBTASK</label>
+                         <RiArrowDropDownLine onClick={()=>onTitleClick(ele._id)} className="drop-d" style={{display:activeId!==ele._id? "block" : "none"}}/><RiArrowDropUpLine onClick={()=>setActiveId(null) }  style={{display: ele._id==activeId? "block" : "none"}} className="drop-u"/>
+                         </div>
 
-         <div>
-         
-            {data && data.map((ele)=>
-             <div key={ele._id}  >
-             <div className="small-title">
-             <h3 className="small-list-title">{ele.title}</h3>
-             
-             <h3>{!ele.status ? <MdPendingActions id="small-task-pending"/> :<BiTask id="small-task-done"/>}</h3>
-             </div>
+                        <div className='sub-task-mapper'  style={{display:ele._id===activeId ?"block":"none"}}>
+                        {
+                          ele.sub && ele.sub.map((data)=>
+                            <h4 key={data.id}>{data.subtask.toUpperCase()}</h4>
 
-              <div  className="small-button">
-               
-                <button id="small-list-update-button"><Link id="small-update-link"  to={`/todo/edit/${ele._id}`}>Update</Link></button>
-             <button id="small-list-delete-button" onClick={()=>handleDelete(ele._id)}>Delete</button>
-              
-              
-              </div>
-          
-             </div>
-             
-            )}
-           
-        
-         </div>
-     
-         
-      </div>
+                          )
+                         }
+                         {
+                         ele.sub.length===0 &&<h3><span>You</span> have no  Subtask !</h3>
+                         }
+                        </div>
+                        
+                        </div>
 
 
+                        <div>
+                        <button onClick={()=>handleDelete(ele._id)}>DELETE</button>
+                        <button><Link style={{color:"white",textDecoration:"none"}} to={`/todo/edit/${ele._id}`}>UPDATE</Link></button>
+                        </div>
 
-
-
-
-
-
-
-      </TodoListWrapper>
+                       </div>
+            })
+          }
+        </div>
+       </TodoListWrapper>
     
   )
 }

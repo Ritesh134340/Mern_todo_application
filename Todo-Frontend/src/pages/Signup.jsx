@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PreviewImage from '../components/PreviewImage'
 
+
 const Signup = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate()
@@ -116,9 +117,6 @@ const Signup = () => {
          <h5>Already have an account ?<NavLink to="/login">Sign In</NavLink></h5> 
 
          </MainDiv>
-
-
-
          <ToastContainer/>
       </SignupWrapper>}
 

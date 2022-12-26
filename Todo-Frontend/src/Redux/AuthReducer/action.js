@@ -33,4 +33,14 @@ const logout=(payload)=>(dispatch)=>{
     dispatch({type:types.LOGOUT_FAILURE})
 }
 
-export {signup,login,logout}
+const updateUser=(payload)=>(dispatch)=>{
+    dispatch({type:types.USER_UPDATE_REQUEST});
+   return axios.patch(`${REACT_APP_URL}/user/update`,payload.updat,{headers:payload.data}).then((res)=>{
+    return  dispatch({type:types.USER_UPDATE_SUCCESS,payload:res.data})
+    }).catch((err)=>{
+        dispatch({type:types.USER_UPDATE_FAILURE})
+    })
+}
+
+
+export {signup,login,logout,updateUser}

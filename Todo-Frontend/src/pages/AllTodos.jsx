@@ -8,12 +8,16 @@ import { useLocation,useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Filter from '../components/Filter';
+import Pagination from '../components/Pagination';
+import Navbar from "../components/Navbar"
 const AllTodos = () => {
  const User=JSON.parse(localStorage.getItem("profile")) || "";
  const token=User.token;
  const [Todos,setTodos]=useState([])
  const dispatch=useDispatch()
  const location=useLocation()
+ const [totalPages,setTotalPages]=useState("")
+ const [currentPage,setCurrentPage]=useState(1)
  const [searchParams]=useSearchParams()
  const {isLoading}=useSelector((state)=>{return { isLoading:state.AppReducer.isLoading,Todos:state.AppReducer.todoList}})
 
@@ -26,12 +30,14 @@ const AllTodos = () => {
               order:searchParams.getAll("sortBy"),
     }
     }
-    dispatch(getTodos(payload)).then((res)=>{
+    dispatch(getTodos(payload,currentPage)).then((res)=>{
       setTodos(res.payload.todos)
+      setTotalPages(res.payload.totalPages)
     })
   } 
-  },[location.search])
+  },[location.search,currentPage])
   
+
 
   const handleDelete=(id)=>{
     if(token){
@@ -57,26 +63,39 @@ const AllTodos = () => {
                 order:searchParams.getAll("sortBy"),
       }
       }
-      dispatch(getTodos(payload)).then((res)=>{
+      dispatch(getTodos(payload,currentPage)).then((res)=>{
         setTodos(res.payload.todos)
+        setTotalPages(res.payload.totalPages)
       })
      })
     }   
   }
   
-  
+    const handlePageChange=(current)=>{
+   
+    setCurrentPage(current)
+  }
 
 
 
   return (
    
-   
-   isLoading ? <h1 style={{margin:"auto",marginTop:"30px",textAlign:"center",fontFamily:"sans-serif",fontSize:"18px"}}>Loading todos...</h1> : <AllTodoWrapper>
+   <>
+   <Navbar/>
+   {isLoading ? <h1 style={{margin:"auto",marginTop:"30px",textAlign:"center",fontFamily:"sans-serif",fontSize:"18px"}}>Loading todos...</h1> : <AllTodoWrapper>
     <Filter/>
    
     { Todos?.length>0 ? <TodoList handleDelete={handleDelete}  data={Todos}/> :<h3 style={{margin:"auto",marginTop:"70px",width:"390px",fontFamily:"sans-serif",letterSpacing:"0.7px"}}>You don't have any todo...<br/>{" "}<NavLink to="/">Create Now !</NavLink></h3>}
     <ToastContainer/>
-     </AllTodoWrapper>
+    <div className="pagination-wrapper">
+    <Pagination total={totalPages} current={currentPage} onChange={handlePageChange}/>
+    </div>
+    
+     </AllTodoWrapper>}
+   </>
+   
+      
+    
    
   )
 }

@@ -1,82 +1,25 @@
 import styled from "styled-components";
 
-// export const HomeWrapper=styled.div`
-//     height:50px;
-//     margin-top:200px;
-//     display:flex;
-//     align-items: center;
-//     font-family:sans-serif;
-//     letter-spacing: 0.8px;
-    
-//     input{
-//         font-family:"Roboto",sans-serif;
-//         border-radius:13px;
-//         height:45px;
-//         width:450px;
-//         padding-left:15px;
-//         font-size:17px;
-        
-//     }
-//     button{
-//         font-size:30px;
-//         color:white;
-//         padding-left:10px;
-//          border:1px solid red;
-//         background-color: transparent;
-//         border:none;
-//     }
-
-//     @media all  and (max-width:1024px) and (min-width:279px){
-       
-//          width:85%;
-//          input{
-//             height:35px;
-//             border-radius:9px;
-//             width:100%;
-//             padding-left:10px;
-//             font-size:13px;
-//          }
-//          button{
-//             font-size:25px;
-
-//          }
-//     }
-
-// `
-
-// export const MainHomeDiv=styled.div`
-//     height:100vh;
-//     width:100vw;
-//     background-position:center;
-//     display:flex;
-//     z-index:999;
-//     justify-content: center;
-    
-//      background-image:url("https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHRleHR1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
-//      @media all  and (max-width:1024px) and (min-width:279px){
-        
-//         border:1px solid green;
-//         margin:auto;
-//      }
-  
-// `
-
-// export const CategoryWrapper=styled.div`
-//      width:300px;
-//      height:200px;
-//      border:1px solid red;
-// `
 
 export const HomeWrapper=styled.div`
     width:100%;
-    height:84vh; 
-     margin-top:18px;
+    height:100vh; 
+    overflow-y: hidden;
+    background:linear-gradient(165deg,orange 35%,white,green);
+   background-size: cover;
+   padding-top:30px;
+   padding-bottom:30px;
+   
 `
 
 export const MainHomeDiv=styled.div`
-     width:95%;
-     height:100%;
      margin:auto;
+     height:100%;
+     box-sizing:border-box;
+     overflow-y:hidden;
+     h1{
+      color:white;
+     }
      .heading-todo{
        
         font-family:sans-serif;
@@ -112,12 +55,14 @@ export const HomeTopDiv=styled.div`
             padding:0px;
             height:auto;
             input{
+             
                 height:30px;
                 padding-left:10px;
                 font-size:16px;
                 border:1px solid gray;
             }
             textarea{
+              
                 height:40px;
                 padding-left:10px;
                 font-size:16px;
@@ -125,6 +70,9 @@ export const HomeTopDiv=styled.div`
             }
         }
       input{
+        outline:none;
+        border:1px solid transparent;
+        border-radius:6px;
         width:100%;
         height:50px;
         padding-left:15px;
@@ -132,6 +80,9 @@ export const HomeTopDiv=styled.div`
 
       }
       textarea{
+        border:1px solid transparent;
+        outline:none;
+        border-radius:6px;
         height:70px;
         width:80%;
         padding:15px;
@@ -146,7 +97,14 @@ export const HomeTopDiv=styled.div`
         box-sizing: border-box;
 
      .task-del{
-      padding:4px 14px;
+      outline:none;
+      border:1px solid transparent;
+      background-color: #0D47A1;
+        color: #FFFFFF;
+        font-size: 20;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor:pointer
 
      }
         @media all and (max-width:1024px) and (min-width:270px){
@@ -227,10 +185,13 @@ export const HomeTopDiv=styled.div`
     
     }
     .btn-holder{
-          
+      background-color: #B71C1C;
+      margin-bottom:50px;
+        color: #FFFFFF;
+        border-radius: 8px;
             padding:10px 25px;
-            border-radius:5px;
-            background-color:transparent;
+        
+            border:1px solid transparent;
             outline: none;
             margin-top:80px;
             font-weight:bold;

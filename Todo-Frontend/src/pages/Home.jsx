@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CategoryWrapper, HomeBottomDiv, HomeTopDiv, HomeWrapper, MainHomeDiv } from '../styles/home.styled'
 import {MdAddCircle} from "react-icons/md"
 import {RiDeleteBin5Line} from "react-icons/ri"
+import Navbar from '../components/Navbar';
 const Home = () => {
   const User=JSON.parse(localStorage.getItem("profile")) || ""
   const token=User.token
@@ -104,6 +105,8 @@ const Home = () => {
 
  
   return (
+    <>
+    <Navbar/>
     <HomeWrapper>
          {  isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<MainHomeDiv >
                <div className='heading-todo'>
@@ -168,6 +171,8 @@ const Home = () => {
           }
           <ToastContainer/>
     </HomeWrapper>
+    
+    </>
   )
 }
 

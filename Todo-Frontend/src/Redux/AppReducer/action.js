@@ -2,9 +2,10 @@ import * as types from "./actionTypes";
 import axios from "axios";
 const {REACT_APP_URL}=process.env
 
-const getTodos=(payload)=>(dispatch)=>{
+const getTodos=(payload,currentPage)=>(dispatch)=>{
     dispatch({type:types.GET_REQUEST});
-   return  axios.get(`${REACT_APP_URL}/todo`,payload).then((res)=>{
+   return  axios.get(`${REACT_APP_URL}/todo?page=${currentPage}&limit=8`,payload).then((res)=>{
+ 
      return   dispatch({type:types.GET_SUCCESSFUL,payload:res.data})
     }).catch((err)=>{
         dispatch({type:types.GET_FAILURE,payload:err})
@@ -29,6 +30,17 @@ const updateTodos=(payload)=>(dispatch)=>{
        return dispatch({type:types.UPDATE_SUCCESSFUL,payload:res.data})
     }).catch((err)=>{
       dispatch({type:types.UPDATE_FAILURE,payload:err})
+    })
+  }
+
+
+
+  const getCahrtData=(payload)=>(dispatch)=>{
+    dispatch({type:types.CHART_DATA_REQUEST})
+    return axios.get(`${REACT_APP_URL}/todo/chartdata`,{headers:payload}).then((res)=>{
+       return dispatch({type:types.CHART_DATA_SUCCESSFUL,payload:res.data})
+    }).catch((err)=>{
+      dispatch({type:types.CHART_DATA_FAILURE,payload:err})
     })
   }
   
@@ -56,4 +68,4 @@ const getById=(payload)=>(dispatch)=>{
 
 
 
-export {getTodos,createTodos,deleteTodo,updateTodos,getById}
+export {getTodos,createTodos,deleteTodo,updateTodos,getById,getCahrtData}

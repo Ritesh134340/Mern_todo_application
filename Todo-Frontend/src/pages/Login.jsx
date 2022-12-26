@@ -21,7 +21,7 @@ const Login = () => {
 
   const {isError,isLoading,token}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading,token:state.AuthReducer.token}})
 
-
+ 
 
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -106,6 +106,7 @@ const Login = () => {
           </SubmitWrapper>
         
         </InputWrapper>
+      
       </form>
       </MainDiv>
       <h5>Don't have an account ?<NavLink to="/signup">Sign Up</NavLink></h5>

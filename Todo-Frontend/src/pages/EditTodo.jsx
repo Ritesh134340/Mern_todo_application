@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import {getById,updateTodos} from "../Redux/AppReducer/action"
 import { EditTodoWrapper } from '../styles/edittodo.styled';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from "../components/Navbar";
 
 const EditTodo = () => {
   const dispatch=useDispatch()
@@ -14,7 +15,7 @@ const EditTodo = () => {
   const token=User.token;
   const [data,setData]=useState({})
   const [title,setTitle]=useState("")
-  const [status,setStatus]=useState(false)
+  const [status,setStatus]=useState("")
   const [show,setShow]=useState(false)
   const {isLoading}=useSelector((state)=>{return {isLoading:state.AppReducer.isLoading}})
   
@@ -41,9 +42,9 @@ const EditTodo = () => {
      dispatch(updateTodos(payload)).then((res)=>{
   
        const id=params.id;
-  const payload={
-   data:{Authorization:`Bearer ${token}`},
-   id:id
+        const payload={
+        data:{Authorization:`Bearer ${token}`},
+        id:id
   }
 
   dispatch(getById(payload)).then((res)=>{
@@ -83,32 +84,44 @@ const EditTodo = () => {
 
 },[params.id])
 
-  
   return (
    
-      <EditTodoWrapper status={status} show={show}>
+     <>
+     <Navbar/>
+     <EditTodoWrapper status={status} show={show}>
       
          
-        <div className='main-edit-div'>
+      <div className='main-edit-div'>
+      
+     {  isLoading? <img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{ objectFit:"cover",width:"80px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"50px"}}></img> : <div className="form-div">
+       <form className="edit-form">
+        <label className="editTitle">Title</label><br/>
+        {!show?<h1 className="status-heading">{data.title}</h1> : <input value={title} onChange={(e)=>setTitle(e.target.value)} ></input>}
+        <br/>
+         <div className="status-wrapper-div">
+         <label className="editTitle">Status</label><br/>
+          <div>
         
-       {  isLoading? <img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"100px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"50px"}}></img> : <div className="form-div">
-         <form className="edit-form">
-          <label className="editTitle">Title</label><br/>
-          {!show?<h1 className="status-heading">{data.title}</h1> : <input value={title} onChange={(e)=>setTitle(e.target.value)} ></input>}
-          <br/>
-          <label className="editTitle">Status</label><br/>
-          <h5 className="status-heading"> {status ? "Done" : "Not Done"}</h5>
-          </form>
-           </div>}
-           <div className="button-div">
-
-         
-           <button onClickCapture={(e)=>e.preventDefault()} onClick={()=>setStatus(!status)} className="edit-button" id="toggle-button" disabled={!show? true:false}>Toggle Status</button>
-          <button onClick={handleUpdate}  className="edit-button" id="edit-button-show">{!show? "Edit" : "Save Changes"}</button>
+          <input value="pending" name='stat'type="radio" onChange={(e)=>setStatus(e.target.value)} defaultChecked={(data && data.status) && data.status==="pending"} />
+          <label >Pending</label>
+          <input value="progress" name='stat' type="radio"   onChange={(e)=>setStatus(e.target.value)}defaultChecked={(data && data.status) && data.status==="progress"} />
+          <label >Progress</label>
+          <input  value="completed" name='stat' type="radio"   onChange={(e)=>setStatus(e.target.value)} defaultChecked={(data && data.status) && data.status==="completed"}/>
+          <label >Completed</label>
           </div>
+        
+         </div>
+       
+        </form>
+         </div>}
+         <div className="button-div">
+
+        <button onClick={handleUpdate}  className="edit-button" id="edit-button-show">{!show? "Edit" : "Save Changes"}</button>
         </div>
-        <ToastContainer/>
-       </EditTodoWrapper>
+      </div>
+      <ToastContainer/>
+     </EditTodoWrapper>
+     </>
       
    
   )

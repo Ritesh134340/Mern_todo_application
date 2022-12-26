@@ -1,20 +1,16 @@
 import styled, { keyframes } from 'styled-components'
 import {Link} from "react-router-dom";
 
-
-
-
-
 export const Nav=styled.div`
-
-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-family:"Roboto",sans-serif;
     height:80px;
     display:flex;
     align-items: center;
     justify-content: space-between;
     color:white;
-    background-color: #1f1d1d;
+    background: linear-gradient(165deg,teal,black ,black,teal);
+   z-index: 999;
     position: fixed;
     top:0px;
     width:100vw;
@@ -47,7 +43,9 @@ export const LeftWrapper=styled.div`
 margin-left:5%;
   .logo{
     font-size:35px;
-    color:gray;
+    background-color: white;
+    color: #B71C1C;
+    border-radius: 5px;
   }
 `
 
@@ -64,6 +62,11 @@ export const RightWrapper=styled.div`
     cursor:pointer;
  
   }
+  #fifth{
+    grid-area:fifth;
+    text-align:center;
+    cursor:pointer;
+  }
   #third{
     grid-area: third;
     cursor:pointer;
@@ -71,6 +74,7 @@ export const RightWrapper=styled.div`
   }
   #third>h5{
     padding-left:6px;
+
   }
   
   #forth{
@@ -83,9 +87,9 @@ export const RightWrapper=styled.div`
   }
 
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 80px;
   grid-template-rows: repeat(1,1fr);
-  grid-template-areas: "first second third forth";
+  grid-template-areas: "first fifth second third forth";
   align-items: center;
   letter-spacing:0.9px;
   font-weight:bold;
@@ -113,6 +117,7 @@ export const RightWrapper=styled.div`
      grid-template-rows: 110px 50px 50px 90px;
      grid-template-areas:
           "third"
+          "fifth"
           "first"
           "second"
           "forth"

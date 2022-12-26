@@ -7,6 +7,7 @@ import Signup from './Signup'
 import AllTodos from './AllTodos'
 import Profile from './Profile'
 import EditTodo from './EditTodo'
+import Summary from "../pages/Summary"
 const AllRoutes = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const AllRoutes = () => {
       <Route path="/todos/all" element={<PrivateRoute><AllTodos/></PrivateRoute>}/>
       <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
       <Route path="/todo/edit/:id" element={<PrivateRoute><EditTodo/></PrivateRoute>}/>
+      <Route path="/summary" element={<Summary/>}/>
     </Routes>
   )
 }

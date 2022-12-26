@@ -51,9 +51,6 @@ const Summary = () => {
     <>
     <Navbar/>
      <div className='main-summ'>
-
-     
-     
      <div className='summ-child'>
      <div className='data-wrapp'>
       <div>

@@ -45,7 +45,7 @@ const TodoList = ({data,handleDelete}) => {
                           )
                          }
                          {
-                         ele.sub.length===0 &&<h3><span>You</span> have no  Subtask !</h3>
+                         ele.sub.length===0 &&<h3 className="alone"><span>You</span> have no  Subtask !</h3>
                          }
                         </div>
                         

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export const Nav=styled.div`
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-family:"Roboto",sans-serif;
+    font-family:sans-serif;
     height:80px;
     display:flex;
     align-items: center;
@@ -14,6 +14,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: fixed;
     top:0px;
     width:100vw;
+    margin-bottom:80px;
     @media all  and (max-width:1024px) and (min-width:279px){
       width:100vw;
       height:70px;

@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 export const TodoListWrapper=styled.div`
     width:100%;
+    
     margin-bottom:80px;
     margin-top:50px;
+   
     font-family:sans-serif;
     letter-spacing: 0.6px;
     .main-div{
+ 
         width:85%;
         margin:auto;
         display: grid;
@@ -82,12 +85,17 @@ export const TodoListWrapper=styled.div`
     .mid-div>h4{
         font-size:13px;
         font-weight:400;
+        margin-bottom:10px;
+        margin-top:3px;
+        padding-top:10px;
         padding-bottom:10px;
-        padding-top:3px;
+        background-color:rgb(242,253,255);
+        padding-left:10px;
+        letter-spacing: 0.7px;
         
     }
    .sub-div{
-       font-weight:600;
+         font-weight:600;
         font-size:13px;
         letter-spacing: 0.7px;
         display: flex;
@@ -95,7 +103,9 @@ export const TodoListWrapper=styled.div`
         gap:10px;
         user-select: none;
    }
-   
+   .alone{
+    padding:10px 18px;
+   }
    .drop-d{
     font-size:35px;
     cursor:pointer;
@@ -105,21 +115,27 @@ export const TodoListWrapper=styled.div`
     cursor:pointer;
    }
    .sub-task-mapper{
+    box-sizing:border-box;
     position:absolute;
     top:100%;
     width:100%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius:8px;
-    background-color: #ebebeb;
+    background-color: #ffffff;
     z-index:3; 
-    padding:20px;
+
    }
    .sub-task-mapper>h4{
     font-weight:500;
     font-family:sans-serif;
     font-size:13px;
     letter-spacing: 0.7px;
-    padding:5px 8px;
+    padding:13px 15px;
+    border-bottom:0.6px solid gray;
+
+   }
+   .sub-task-mapper>h4:last-child{
+    border-bottom:none;
    }
    .sub-task-mapper>h3{
         color:green;

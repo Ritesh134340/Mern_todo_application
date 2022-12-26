@@ -2,64 +2,115 @@ import styled from "styled-components";
 
 
 export const HomeWrapper=styled.div`
-    width:100%;
-    height:100vh; 
-    overflow-y: hidden;
-    background:linear-gradient(165deg,orange 35%,white,green);
-   background-size: cover;
-   padding-top:30px;
-   padding-bottom:30px;
-   
+    background:linear-gradient(165deg,orange 38% ,white,green);
+   padding-bottom:35px;
+   overflow: hidden;
+   box-sizing: border-box;
+  
 `
+
 
 export const MainHomeDiv=styled.div`
      margin:auto;
-     height:100%;
-     box-sizing:border-box;
-     overflow-y:hidden;
+     width:100%;
+     box-sizing: border-box;
      h1{
       color:white;
+      margin-top:30px;
+     }
+     .common-labels{
+      display: block;
+      margin-top:20px;
+      width:100%;
+      
+      padding:0px;
+      padding-bottom:8px;
+      font-size:18px;
+      font-weight:600;
+      letter-spacing: 0.6px;
+      font-family:sans-serif
+
      }
      .heading-todo{
        
         font-family:sans-serif;
         width:100%;
         text-align: center;
-        margin-top:35px;
+        padding-top:35px;
      }
      @media all and (max-width:1024px) and (min-width:279px){
-      width:88%
+      font-size:17px;
+      font-weight:600;
      }
+    
 `
 export const HomeTopDiv=styled.div`
     display:flex;
     justify-content: space-evenly;
-    width:100%;
-    height:350px;
-    margin-top:40px;
+    width:85%;
+    margin:auto;
+    margin-top:30px;
 
     @media all and (max-width:1024px) and (min-width:279px){
         flex-direction: column;
-        height:auto;
-      
+        .common-textArea{
+          width:91%;
+          margin:auto;
+        }
     }
+
+  .common-date{
+
+  text-align:center;
+  height:430px;
+ @media all and (max-width:1024px) and (min-width:279px){
+   width:100%;
+   padding:0px;  
+    #btn-holder{
+       background-color:blue;
+       margin-top:50px;
+      }
+      .date-holder{
+        display:none;
+  }
+ }
+  .date-holder{
+      margin:auto;
+      height:30px;
+  
+  }
+  #btn-holder{
+    background-color: #B71C1C;
+    margin:auto;
+    margin-top:100px;
+    box-sizing: border-box;
+    display:block;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding:10px 25px;
+      
+    border:1px solid transparent;
+    outline: none;
+   font-weight:bold;
+   font-size:17px;
+    cursor:pointer;
+     
+      }
+}
    
     .common-textArea{
         padding:25px;
         width:33%;
-    
- 
-    height:auto;
+        height:auto;
         @media all and (max-width:1024px) and (min-width:279px){
             width:100%;
             padding:0px;
             height:auto;
             input{
-             
+                width:100%;
                 height:30px;
                 padding-left:10px;
                 font-size:16px;
-                border:1px solid gray;
             }
             textarea{
               
@@ -74,6 +125,7 @@ export const HomeTopDiv=styled.div`
         border:1px solid transparent;
         border-radius:6px;
         width:100%;
+        box-sizing: border-box;
         height:50px;
         padding-left:15px;
         font-size:18px;
@@ -88,9 +140,10 @@ export const HomeTopDiv=styled.div`
         padding:15px;
         font-size:17px;
         font-weight:400;
-        resize: vertical;
+        resize: none;
       }
     }
+    
     .common-addtask{
         padding:25px;
         width:33%;
@@ -113,9 +166,7 @@ export const HomeTopDiv=styled.div`
             height:auto;
             position: relative;
         
-              .sub-holder{
-           
-         
+          .sub-holder{
          margin-bottom:20px;
          height:50px;
          position:absolute;
@@ -125,10 +176,13 @@ export const HomeTopDiv=styled.div`
         }
      input{
         width:100%;
-        height:35px;
+        box-sizing: border-box;
+        height:40px;
         padding:10px;
+        border-radius:4px;
         margin-bottom:13px;
-        border:1px solid gray;
+        border:1px solid transparent;
+        outline:none;
      }
   
 
@@ -159,47 +213,7 @@ export const HomeTopDiv=styled.div`
       }
      }
     }
-.common-date{
-  
-    padding:25px;
-    height:auto;
-    width:33%;
-   text-align:center;
-  
-   @media all and (max-width:1024px) and (min-width:279px){
-           width:100%;
-            padding:0px;
-            height:auto;     
-        .btn-holder{
-          border-radius:5px;
-        }
-        .date-holder{
-          display:none;
-       
-    }
-   }
-    .date-holder{
-        margin:auto;
-        width:90%;
-        height:30px;
-    
-    }
-    .btn-holder{
-      background-color: #B71C1C;
-      margin-bottom:50px;
-        color: #FFFFFF;
-        border-radius: 8px;
-            padding:10px 25px;
-        
-            border:1px solid transparent;
-            outline: none;
-            margin-top:80px;
-            font-weight:bold;
-            font-size:17px;
-            cursor:pointer;
-       
-        }
- }
+
 `
 
 export const HomeBottomDiv=styled.div`
@@ -216,13 +230,17 @@ export const HomeBottomDiv=styled.div`
       
       }
     }
+    .radioWrapper-main{
+    
+    }
     .radioWrapper{
-        margin-top:15px;
+        margin-top:-10px;
         height:50px;
         display:flex;
         align-items: center;
        font-size:14px;
        user-select: none;
+       
        input{
         margin-left:4px ;
         margin-right:18px;

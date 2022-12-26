@@ -115,12 +115,14 @@ const Home = () => {
               
               <HomeTopDiv>
               <div className="common-textArea"  >
-                
+                <label className='common-labels' >Title</label>
                 <input type="text" placeholder='Enter title...' onChange={(e)=>setTodoTitle(e.target.value)}/><br/><br/>
+                <label className='common-labels'  >Description</label>
                 <textarea placeholder='No description is added....' onChange={(e)=>setDescription(e.target.value)}></textarea>
                 <HomeBottomDiv>
           
            <div className='checkWrapper'>
+              <label className='common-labels'>Category</label>
               <select onChange={(e)=>setCategory(e.target.value)} >
                 <option value="official" >Official</option>
                 <option value="personal" >Personal</option>
@@ -128,14 +130,19 @@ const Home = () => {
                 <option value="others" >Others</option>
               </select>
             </div>
-          
-            <div className='radioWrapper'>
-              <label>Progress</label>
+           
+           
+            <div className="radioWrapper-main">
+            <label className='common-labels'  >Status</label>
+             <div className='radioWrapper'>
+
+             <label>Progress</label>
                <input value="progress" name="status" type="radio"  onChange={(e)=>setStatus(e.target.value)}/>
                <label>Pending</label>
                <input name="status" value="pending" type="radio"  onChange={(e)=>setStatus(e.target.value)}/>
                <label>Completed</label>
                <input name="status" type="radio" value="completed" onChange={(e)=>setStatus(e.target.value)}/>
+             </div>
             </div>
          
 
@@ -144,6 +151,7 @@ const Home = () => {
               </div>
 
               <div className="common-addtask" >
+              <label className='common-labels'  >Subtask</label>
                 <input type="text" placeholder='Create Subtask..' onChange={(e)=>setSubValue(e.target.value)} /><br />
                 <button className="task-del" onClick={handleAddSub}>Add Subtask</button>
                  <div className="sub-holder">
@@ -161,8 +169,10 @@ const Home = () => {
                  </div>
               </div>
               <div className='common-date' >
-                <div className="date-holder" ><h3>{new Date().toDateString()}</h3></div>
-               <button className='btn-holder' onClick={handleAddTodo}>Create New Task</button>
+                <div className="date-holder" ><h3>{new Date().toDateString()}</h3>
+                </div>
+                
+               <button id='btn-holder' onClick={handleAddTodo}>Create New Task</button>
                </div>
               </HomeTopDiv>
              

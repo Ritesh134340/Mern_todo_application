@@ -134,13 +134,7 @@ export const TodoListWrapper=styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius:8px;
     background-color:  #ffffff;
-    
-  
-   
-    
-  
-
-
+    overflow:hidden;
    }
    .sub-task-mapper>h4{
     font-weight:500;

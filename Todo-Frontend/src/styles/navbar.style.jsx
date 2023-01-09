@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 
 export const Nav=styled.div`
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+margin:auto;
+z-index:999;
     font-family:sans-serif;
     height:80px;
     display:flex;
@@ -16,11 +18,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width:100vw;
     margin-bottom:80px;
     @media all  and (max-width:1024px) and (min-width:279px){
-      width:100vw;
-      height:70px;
-      margin:auto;
-      z-index:999;
-      
+      height:70px; 
     }
 `
 
@@ -107,10 +105,16 @@ export const RightWrapper=styled.div`
 
   
   }
+  .name-with-img>h5{
+     font-family:sans-serif;
+ 
+  }
   #sixth{
-    width:30px;
-    height:30px;
-    border-radius:50%
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:top;
   }
   @media all  and (max-width:1024px) and (min-width:279px){
     
@@ -137,11 +141,11 @@ export const RightWrapper=styled.div`
     .name-with-img{
       flex-direction: column;
       height:80px;
+    
     }
     #sixth{
-       width:50px;
-       height:50px;
-
+       width:60px;
+       height:60px;
     }
     #first{
     grid-area: first;

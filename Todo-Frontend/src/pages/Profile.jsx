@@ -1,9 +1,12 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef,useEffect} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Modal, ProfileWrapper } from '../styles/profile.style'
 import {FaEdit} from "react-icons/fa"
 import Navbar from '../components/Navbar'
 import { updateUser } from '../Redux/AuthReducer/action'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
+import PreviewImage from '../components/PreviewImage'
 const Profile = () => {
     const dispatch=useDispatch()
     const [show,setShow]=useState(false)
@@ -11,6 +14,8 @@ const Profile = () => {
     const { REACT_APP_URL } = process.env;
     const user_image = User.image;
     const modalRef=useRef(null)
+    const ImageRef=useRef(null)
+    const [image,setImage]=useState("")
     const [name,setName]=useState(User.name)
     const [title,setTitle]=useState(User.title)
     const [email,setEmail]=useState(User.email)
@@ -21,22 +26,56 @@ const Profile = () => {
        }
     }
     const handleUpdate=()=>{
-      const payload={
-        data: {Authorization:`Bearer ${token}`},
-        updat:{ first_name:name,
-                last_name:title,
-                email:email
-              }
-      }
-       if(name!=="" && email!=="" && title!=="" ) 
-         dispatch(updateUser(payload)).then((res)=>{
-          localStorage.setItem("profile",JSON.stringify(res.payload.document))
-          alert(res.payload.mesg)
-          setShow(false)
-         })
+
+     const formData=new FormData()
+
+     if(image!==""){
+      formData.append("image",image)
+     }
+     formData.append("first_name",name)
+
+     formData.append("last_name",title)
+
+     formData.append("email",email)
+     
+
+     const config = {     
+      headers: { 'content-type': 'multipart/form-data',
+      Authorization:`Bearer ${token}`
+    }
+     
+  }
+
+
+  if(name!=="" && email!=="" && title!=="" ) 
+  dispatch(updateUser({formData,config}))
+  
+  .then((res)=>{
+   localStorage.setItem("profile",JSON.stringify(res.payload.document))
+   let resp=(res.payload.mesg)
+   toast.success(resp,{
+     position: "top-center",
+     autoClose: 2000,
+     hideProgressBar: true,
+     closeOnClick: true,
+     pauseOnHover: true,
+     draggable: true,
+     progress: undefined,
+     theme: "colored",
+     })
+   setShow(false)
+  })
+  
      }
 
+const updateImage=()=>{
+  ImageRef.current.click()
+}
 
+const handleSetImage=(e)=>{
+
+  e.target.files[0] && setImage(e.target.files[0])
+}
 
 
   return (
@@ -46,7 +85,9 @@ const Profile = () => {
         <ProfileWrapper show={show}>
             <div className="inner-first">
             <div className="inner-div">
-            <img
+
+              <div className="prev-img" onClick={updateImage} >
+              {image!=="" && <PreviewImage  file={image}/> ? <PreviewImage  file={image}/> : <img
                 className="prof-img-prof"
                 src={
                   user_image
@@ -54,7 +95,10 @@ const Profile = () => {
                     : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
                 }
                 alt="user_profile"
-              />
+              /> } 
+              </div>
+           
+              <input type="file" hidden ref={ImageRef} onChange={handleSetImage}/>
              <div className='editWrapper'>
               <div>
               <h3 className="name-head">Name</h3>
@@ -80,6 +124,7 @@ const Profile = () => {
               
               </div>
             </Modal>
+            <ToastContainer/>
         </ProfileWrapper>
        </>
   

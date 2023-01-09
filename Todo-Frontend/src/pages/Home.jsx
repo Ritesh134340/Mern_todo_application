@@ -107,7 +107,7 @@ const Home = () => {
   return (
     <>
     <Navbar/>
-    <HomeWrapper>
+   
          {  isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<MainHomeDiv >
                <div className='heading-todo'>
                <h1>Create New Task List</h1>
@@ -176,12 +176,11 @@ const Home = () => {
                </div>
               </HomeTopDiv>
              
-
-          </MainHomeDiv>
-          }
           <ToastContainer/>
-    </HomeWrapper>
-    
+          </MainHomeDiv>
+          
+          }
+          
     </>
   )
 }

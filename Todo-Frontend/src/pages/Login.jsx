@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+
+import { SiTodoist } from "react-icons/si";
 import {
   HeadingWrapper,
   InputWrapper,
@@ -88,19 +89,24 @@ const Login = () => {
 
   return (
     isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img>  : <LoginWrapper>
+      <div className="logo-in-log">
+      
+        <SiTodoist className="logo-sign"/>
+   
+        <h1>Todo Application</h1></div>
       <HeadingWrapper>
         <h1>Sign In</h1>
-      </HeadingWrapper>
+    
       <MainDiv>
       <form onSubmit={handleSubmit}>
         <InputWrapper>
           <label>Email</label>
           <br />
-          <input value={email} type="text" onChange={(e)=>setEmail(e.target.value)}></input>
+          <input className="em-inp" value={email} type="text" onChange={(e)=>setEmail(e.target.value)}></input>
           <br />
           <label>Password</label>
           <br />
-          <input vlaue={password} type="text" onChange={(e)=>setPassword(e.target.value)}></input>
+          <input  className="em-inp"  vlaue={password} type="text" onChange={(e)=>setPassword(e.target.value)}></input>
           <SubmitWrapper>
           <input type="submit"></input>
           </SubmitWrapper>
@@ -110,6 +116,8 @@ const Login = () => {
       </form>
       </MainDiv>
       <h5>Don't have an account ?<NavLink to="/signup">Sign Up</NavLink></h5>
+    
+      </HeadingWrapper>
       <ToastContainer/>
     </LoginWrapper>
   );

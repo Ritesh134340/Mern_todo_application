@@ -1,46 +1,36 @@
 import styled from "styled-components";
 
-
-export const HomeWrapper=styled.div`
-    background:linear-gradient(165deg,orange 38% ,white,green);
-   padding-bottom:35px;
-   overflow: hidden;
-   box-sizing: border-box;
-  
-`
-
-
 export const MainHomeDiv=styled.div`
-     margin:auto;
-     width:100%;
-     box-sizing: border-box;
-     h1{
-      color:white;
-      margin-top:30px;
+margin:auto;
+box-sizing:border-box; background:linear-gradient(165deg,orange 38% ,white,green);
+width:100%;
+padding-top:3px;
+ h1{
+  color:white;
+  margin-top:30px;
+  }
+  .common-labels{
+  display: block;
+  margin-top:20px;
+  width:100%;
+  padding:0px;
+  padding-bottom:8px;
+  font-size:18px;
+  font-weight:600;
+  letter-spacing: 0.6px;
+  font-family:sans-serif;
      }
-     .common-labels{
-      display: block;
-      margin-top:20px;
-      width:100%;
-      
-      padding:0px;
-      padding-bottom:8px;
-      font-size:18px;
-      font-weight:600;
-      letter-spacing: 0.6px;
-      font-family:sans-serif
 
-     }
-     .heading-todo{
-       
-        font-family:sans-serif;
-        width:100%;
-        text-align: center;
-        padding-top:35px;
-     }
+ .heading-todo{
+  font-family:sans-serif;
+  width:100%;
+  text-align: center;
+  padding-top:35px;
+   }
      @media all and (max-width:1024px) and (min-width:279px){
       font-size:17px;
       font-weight:600;
+      min-height: 100vh;
      }
     
 `
@@ -60,12 +50,12 @@ export const HomeTopDiv=styled.div`
     }
 
   .common-date{
-
   text-align:center;
-  height:430px;
+
  @media all and (max-width:1024px) and (min-width:279px){
    width:100%;
-   padding:0px;  
+   padding:0px; 
+   margin-bottom:30px; 
     #btn-holder{
        background-color:blue;
        margin-top:50px;

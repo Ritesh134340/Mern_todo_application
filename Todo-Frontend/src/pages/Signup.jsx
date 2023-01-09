@@ -7,7 +7,7 @@ import {signup} from "../Redux/AuthReducer/action"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PreviewImage from '../components/PreviewImage'
-
+import { SiTodoist } from "react-icons/si";
 
 const Signup = () => {
   const dispatch=useDispatch();
@@ -83,8 +83,13 @@ const Signup = () => {
          
         
         {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
-       
-        <HeadingWrapper><h1>Sign Up</h1></HeadingWrapper>
+        <div className="logo-in-log">
+      
+      <SiTodoist className="logo-sign"/>
+ 
+      <h1>Todo Application</h1></div>
+        <HeadingWrapper>
+          <h1>Sign Up</h1>
          
          <MainDiv>
        
@@ -99,15 +104,16 @@ const Signup = () => {
           <InputWrapper>
          <input type="file" hidden ref={ImageRef} onChange={(e)=>setImage(e.target.files[0])}/>
           <label>First Name</label><br/>
-           <input value={name} type="text" onChange={(e)=>setName(e.target.value)}></input><br/>
+           <input className="em-inp" value={name} type="text" onChange={(e)=>setName(e.target.value)}></input><br/>
            <label>Last Name</label><br/>
-           <input value={last} type="text" onChange={(e)=>setLast(e.target.value)}></input><br/>
+           <input className="em-inp" value={last} type="text" onChange={(e)=>setLast(e.target.value)}></input><br/>
            <label>Email</label><br/>
-           <input value={email} type="text" onChange={(e)=>setEmail(e.target.value)}></input><br/>
+           <input className="em-inp" value={email} type="email" onChange={(e)=>setEmail(e.target.value)}></input><br/>
            <label>Password</label><br/>
-           <input value={password}  type="text" onChange={(e)=>setPassword(e.target.value)}></input><br/>
+           <input className="em-inp" value={password}  type="password" onChange={(e)=>setPassword(e.target.value)}></input><br/>
            <SubmitWrapper>
            <input type="submit"></input>
+           
            </SubmitWrapper>
            
           </InputWrapper>
@@ -117,6 +123,8 @@ const Signup = () => {
          <h5>Already have an account ?<NavLink to="/login">Sign In</NavLink></h5> 
 
          </MainDiv>
+         
+         </HeadingWrapper>
          <ToastContainer/>
       </SignupWrapper>}
 

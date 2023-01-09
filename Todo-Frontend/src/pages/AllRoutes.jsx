@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route,HashRouter as Routes } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Login from './Login'
 import Home from "./Home"
 import PrivateRoute from '../private/PrivateRoute'
@@ -10,7 +10,7 @@ import EditTodo from './EditTodo'
 import Summary from "../pages/Summary"
 const AllRoutes = () => {
   return (
-    <Routes>
+    <Router>
       <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
@@ -18,7 +18,8 @@ const AllRoutes = () => {
       <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
       <Route path="/todo/edit/:id" element={<PrivateRoute><EditTodo/></PrivateRoute>}/>
       <Route path="/summary" element={<Summary/>}/>
-    </Routes>
+    </Router>
+   
   )
 }
 

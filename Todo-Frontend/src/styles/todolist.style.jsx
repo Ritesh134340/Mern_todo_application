@@ -11,12 +11,12 @@ export const TodoListWrapper=styled.div`
     letter-spacing: 0.6px;
     .main-div{
  
-        width:85%;
+        width:88%;
         margin:auto;
         display: grid;
         grid-template-columns: repeat(4,minmax(250px,1fr));
         grid-template-rows:auto;
-        gap:30px;
+        gap:20px;
         box-sizing:border-box;
     
     }
@@ -134,7 +134,7 @@ export const TodoListWrapper=styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius:8px;
     background-color:  #ffffff;
-    overflow:hidden;
+    /* overflow:hidden; */
    }
    .sub-task-mapper>h4{
     font-weight:500;

@@ -159,12 +159,13 @@ export const SignupImage=styled.div`
     text-align: center;
     margin-bottom:20px;
 
+
   img{
-     width:90px;
-     height:90px;
+     width:100px;
+     height:100px;
      border-radius:50%;
      object-fit:cover;
-     object-position:center;
+     object-position:top;
 
   }  
   button{

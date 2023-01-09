@@ -15,6 +15,7 @@ const Profile = () => {
     const user_image = User.image;
     const modalRef=useRef(null)
     const ImageRef=useRef(null)
+    const [req,setReq]=useState(false)
     const [image,setImage]=useState("")
     const [name,setName]=useState(User.name)
     const [title,setTitle]=useState(User.title)
@@ -26,6 +27,7 @@ const Profile = () => {
        }
     }
     const handleUpdate=()=>{
+      setReq(true)
 
      const formData=new FormData()
 
@@ -64,6 +66,7 @@ const Profile = () => {
      theme: "colored",
      })
    setShow(false)
+   setReq(false)
   })
   
      }
@@ -120,7 +123,7 @@ const handleSetImage=(e)=>{
                 <input value={title} type="text" onChange={(e)=>setTitle(e.target.value)} /><br/>
                 <input value={email} type="text" onChange={(e)=>setEmail(e.target.value)} />
                 </div>
-                <button onClick={handleUpdate}>Save</button>
+                <button style={{backgroundColor:req?"gray":"rgb(13,71,161)"}}  onClick={handleUpdate}>{req?"Wait...":"Save"}</button>
               
               </div>
             </Modal>

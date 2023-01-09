@@ -106,7 +106,7 @@ const Login = () => {
           <br />
           <label>Password</label>
           <br />
-          <input  className="em-inp"  vlaue={password} type="text" onChange={(e)=>setPassword(e.target.value)}></input>
+          <input  className="em-inp"  vlaue={password} type="password" onChange={(e)=>setPassword(e.target.value)}></input>
           <SubmitWrapper>
           <input type="submit"></input>
           </SubmitWrapper>

@@ -33,8 +33,7 @@ auth.get('/google/profile',(req,res)=>{
 })
 
  auth.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login',successRedirect:'http://localhost:3000/googlecheck'})
-  
+  passport.authenticate('google', { failureRedirect: `${process.env.REACT_APP_URL}/login`,successRedirect:`${process.env.REACT_APP_URL}/googlecheck`})
   );
 
 module.exports=auth

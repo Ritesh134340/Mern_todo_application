@@ -12,8 +12,7 @@ export const SignupWrapper=styled.div`
     display: flex;
     justify-content: center;
     align-items:center;
-    margin-top:30px;
-    margin-bottom:50px;
+    margin-bottom:20px;
     gap:20px;
   
 }
@@ -59,19 +58,17 @@ export const InputWrapper=styled.div`
 
 export const HeadingWrapper=styled.div `
     margin:auto;
-    margin-top:40px;
     margin-bottom:50px;
     width:30%;
     box-sizing: border-box;
-     padding:20px;
+     padding:15px;
     border-radius:13px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-bottom:20px;
     font-size:14px;
     h5{
         text-align: center;
-        margin-top:5px;
-        padding-bottom:20px;
+        margin-top:25px;
         text-decoration:none;
         font-size:14px;
         color:gray;
@@ -137,7 +134,58 @@ export const MainDiv=styled.div`
   margin:auto;
   margin-top:40px;
   margin-bottom:30px;
-  
+  .google-btn-wrapper{
+   
+}
+.or-div{
+  width:100%;
+  height:35px;
+  border-bottom:1px solid gray;
+  position:relative; 
+  margin-bottom:20px; 
+}
+.or-div>h3{
+position:absolute;
+left:46%;
+top:50%;
+font-family:sans-serif;
+font-weight:600;
+padding:6px;
+border-radius:50%;
+background-color: white;
+object-fit: center;
+}
+
+.google-btn-div{
+    width:100%;
+    display:flex;
+    margin-top:30px;
+    align-items: center;
+    gap:10px;
+    border:1px solid rgb(209,213,219);
+    border-radius:6px;
+    justify-content:center;
+    cursor:pointer;
+    padding:8px 0px;
+    
+}
+.google-icon{
+   
+    margin:0;
+    padding:0;
+    font-size:20px;
+}
+.google-btn-div>button{
+
+    font-weight:800;
+    font-size:12px;
+    font-family:sans-serif;
+    letter-spacing: 0.5px;
+    outline:none;
+    border:none;
+    background-color: white;
+    cursor:pointer;
+}
   input{
        width:100%;
        box-sizing:border-box;

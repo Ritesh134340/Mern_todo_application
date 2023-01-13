@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import uniqid from 'uniqid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
 import { CategoryWrapper, HomeBottomDiv, HomeTopDiv, HomeWrapper, MainHomeDiv } from '../styles/home.styled'
 import {MdAddCircle} from "react-icons/md"
 import {RiDeleteBin5Line} from "react-icons/ri"
@@ -98,6 +99,7 @@ const Home = () => {
 
     setSubTask(result)
   }
+
 
 
 

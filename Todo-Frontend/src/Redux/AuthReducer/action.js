@@ -43,4 +43,14 @@ const updateUser=({formData,config})=>(dispatch)=>{
 }
 
 
-export {signup,login,logout,updateUser}
+const googleAuthentication=()=>(dispatch)=>{
+    dispatch({type:types.GOOGLE_AUTHENTICATION_REQUEST});
+   return axios.get(`${REACT_APP_URL}/auth/google/profile`,{withCredentials:true}).then((res)=>{
+     return   dispatch({type:types.GOOGLE_AUTHENTICATION_SUCCESS,payload:res})
+       }).catch((err)=>{
+        dispatch({type:types.GOOGLE_AUTHENTICATION_FAILURE})
+       })
+}
+
+
+export {signup,login,logout,updateUser,googleAuthentication}

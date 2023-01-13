@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import {FcGoogle} from "react-icons/fc";
 import { SiTodoist } from "react-icons/si";
 import {
   HeadingWrapper,
@@ -14,12 +14,13 @@ import {useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Login = () => {
   const dispatch=useDispatch();
   const [email,setEmail]=useState("")
+  const {REACT_APP_URL}=process.env;
   const [password,setPassword]=useState("")
   const navigate=useNavigate();
-
   const {isError,isLoading,token}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading,token:state.AuthReducer.token}})
 
  
@@ -87,6 +88,13 @@ const Login = () => {
     }
   }
 
+  const handleGoogleLogin=(e)=>{
+    e.preventDefault()
+    window.location.replace(`${REACT_APP_URL}/auth/google`,);
+   
+  }
+
+ 
   return (
     isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img>  : <LoginWrapper>
       <div className="logo-in-log">
@@ -110,11 +118,26 @@ const Login = () => {
           <SubmitWrapper>
           <input type="submit"></input>
           </SubmitWrapper>
-        
-        </InputWrapper>
-      
+          <div className="google-btn-wrapper">
+           <div  className="or-div">
+            <h3>OR</h3>
+           </div>
+
+           <div className="google-btn-div" >
+            <span><FcGoogle className="google-icon"/></span>
+           <button onClick={handleGoogleLogin}>CONTINUE WITH GOOGLE</button>
+           </div>
+   
+          </div>
+        </InputWrapper>   
       </form>
+
+      
       </MainDiv>
+
+         
+        
+        
       <h5>Don't have an account ?<NavLink to="/signup">Sign Up</NavLink></h5>
     
       </HeadingWrapper>

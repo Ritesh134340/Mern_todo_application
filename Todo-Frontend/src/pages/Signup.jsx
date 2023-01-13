@@ -1,5 +1,6 @@
 import React, { useRef,useEffect } from 'react'
-import {Link,useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {FcGoogle} from "react-icons/fc";
 import { HeadingWrapper, SignupImage , InputWrapper, MainDiv, NavLink, SignupWrapper, SubmitWrapper } from '../styles/signup.style'
 import { useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
@@ -77,6 +78,12 @@ const Signup = () => {
     }
   }
 
+  const handleGoogleLogin=(e)=>{
+    e.preventDefault()
+    window.location.replace("http://localhost:8000/auth/google",);
+  
+ }
+
 
   return (
          <div>
@@ -115,7 +122,17 @@ const Signup = () => {
            <input type="submit"></input>
            
            </SubmitWrapper>
-           
+           <div className="google-btn-wrapper">
+           <div  className="or-div">
+            <h3>OR</h3>
+           </div>
+
+           <div className="google-btn-div" >
+            <span><FcGoogle className="google-icon"/></span>
+           <button onClick={handleGoogleLogin}>SIGN UP WITH GOOGLE</button>
+           </div>
+   
+          </div>
           </InputWrapper>
            
          </form>

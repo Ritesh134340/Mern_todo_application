@@ -11,12 +11,13 @@ export const TodoListWrapper=styled.div`
     letter-spacing: 0.6px;
     .main-div{
  
-        width:88%;
+        width:90%;
         margin:auto;
         display: grid;
         grid-template-columns: repeat(4,minmax(250px,1fr));
         grid-template-rows:auto;
-        gap:20px;
+        row-gap:30px;
+        column-gap:20px;
         box-sizing:border-box;
     
     }

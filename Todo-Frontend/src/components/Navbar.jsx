@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { SiTodoist } from "react-icons/si";
 const Navbar = () => {
-  const { REACT_APP_URL } = process.env;
   const User = JSON.parse(localStorage.getItem("profile")) || "";
   const token = User.token || "";
   const first_name = User.name;
@@ -47,6 +46,7 @@ const Navbar = () => {
       navigate("/login");
     }, 2200);
   };
+  
 
   return (
     <>
@@ -71,11 +71,7 @@ const Navbar = () => {
             <div id="third" className="name-with-img">
               <img
                 id="sixth"
-                src={
-                  user_image
-                    ? `${REACT_APP_URL}${user_image}`
-                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
-                }
+                src={user_image}
                 alt="profile"
               />
               <h5>

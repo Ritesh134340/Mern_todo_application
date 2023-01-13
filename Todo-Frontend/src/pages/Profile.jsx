@@ -94,7 +94,7 @@ const handleSetImage=(e)=>{
                 className="prof-img-prof"
                 src={
                   user_image
-                    ? `${REACT_APP_URL}${user_image}`
+                    ? `${user_image}`
                     : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
                 }
                 alt="user_profile"

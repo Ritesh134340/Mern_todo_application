@@ -7,10 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GoogleCheck = () => {
   const dispatch=useDispatch();
-  const navigate=useNavigate()
+  const navigate=useNavigate();
+
 
  
 useEffect(()=>{
+
   dispatch(googleAuthentication()).then((res)=>{
  if(res.payload.data.token){
   const user_token=res.payload.data.token;
@@ -43,8 +45,10 @@ useEffect(()=>{
     setTimeout(()=>{
       navigate("/")
     },2000.5)
+    
  }
  else{
+
   toast.error(res.payload.data.mesg, {
     position: "top-center",
     autoClose: 2000,
@@ -55,9 +59,14 @@ useEffect(()=>{
     progress: undefined,
     theme: "colored",
     })
+
+    setTimeout(()=>{
+      navigate("/login")
+    },2000.5)
  }
    }).catch((err)=>{
     console.log(err)
+  
    })
 },[])
 

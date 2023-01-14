@@ -90,7 +90,7 @@ const Login = () => {
 
   const handleGoogleLogin=(e)=>{
     e.preventDefault()
-    window.location.replace(`${REACT_APP_URL}/auth/google`,);
+    window.location.replace(`${REACT_APP_URL}/auth/google`);
    
   }
 

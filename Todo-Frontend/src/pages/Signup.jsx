@@ -13,6 +13,7 @@ import { SiTodoist } from "react-icons/si";
 const Signup = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate()
+  const {REACT_APP_URL}=process.env;
   const [name,setName]=useState("")
   const [last,setLast]=useState("")
   const [email,setEmail]=useState("")
@@ -80,8 +81,8 @@ const Signup = () => {
 
   const handleGoogleLogin=(e)=>{
     e.preventDefault()
-    window.location.replace("http://localhost:8000/auth/google",);
-  
+    window.open(`${REACT_APP_URL}/auth/google`,'_self');
+
  }
 
 
@@ -89,7 +90,7 @@ const Signup = () => {
          <div>
          
         
-        {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
+        {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" alt="Loading..." style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
         <div className="logo-in-log">
       
       <SiTodoist className="logo-sign"/>

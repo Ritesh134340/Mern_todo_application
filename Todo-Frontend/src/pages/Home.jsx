@@ -75,6 +75,7 @@ const Home = () => {
         id:id
       }
       setSubTask([...subTask,payload])
+      setSubValue("")
     }
     else{
       toast.warn('No subtask to add !', {
@@ -154,15 +155,15 @@ const Home = () => {
 
               <div className="common-addtask" >
               <label className='common-labels'  >Subtask</label>
-                <input type="text" placeholder='Create Subtask..' onChange={(e)=>setSubValue(e.target.value)} /><br />
+                <input value={subValue} type="text" placeholder='Create Subtask..' onChange={(e)=>setSubValue(e.target.value)} /><br />
                 <button className="task-del" onClick={handleAddSub}>Add Subtask</button>
                  <div className="sub-holder">
                   {
                     subTask && subTask.map((ele,index)=>
                       <div className="del-btn" key={index}>
                         <h5>{ele.subtask}</h5>
-                        <button onClick={()=>handleSubDel(ele.id)}>
-                        <RiDeleteBin5Line />
+                        <button style={{border:"1px solid rgb(216,219,224)"}}onClick={()=>handleSubDel(ele.id)}>
+                        <RiDeleteBin5Line style={{cursor:"pointer"}} />
                         </button>
                         
                       </div>

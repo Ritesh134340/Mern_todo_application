@@ -1,86 +1,81 @@
-import React,{useEffect} from 'react'
-import {useNavigate} from "react-router-dom";
-import { googleAuthentication } from '../Redux/AuthReducer/action';
-import { useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { googleAuthentication } from "../Redux/AuthReducer/action";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const GoogleCheck = () => {
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
 
+  const navigate = useNavigate();
 
- 
-useEffect(()=>{
+  useEffect(() => {
+    const userString = new URLSearchParams(window.location.search).get("user");
+    if (userString) {
+      let res = JSON.parse(decodeURIComponent(userString));
 
-  dispatch(googleAuthentication()).then((res)=>{
- if(res.payload.data.token){
-  const user_token=res.payload.data.token;
-  const first_name=res.payload.data.name
-  const last_name=res.payload.data.title
-  const user_email=res.payload.data.email
-  const user_image=res.payload.data.image
+      const user_token = res.token;
+      const first_name = res.name;
+      const last_name = res.title;
+      const user_email = res.email;
+      const user_image = res.image;
+      const mesg=res.mesg
 
-  const data={
-     name:first_name,
-     title:last_name,
-     email:user_email,
-     token:user_token,
-     image:user_image
-  }
+        const data={
+           name:first_name,
+           title:last_name,
+           email:user_email,
+           token:user_token,
+           image:user_image
+        }
 
-  localStorage.setItem("profile",JSON.stringify(data))
+        localStorage.setItem("profile",JSON.stringify(data))
 
-  toast.success(res.payload.data.mesg,{
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    })
+        toast.success(mesg,{
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          })
 
-    setTimeout(()=>{
-      navigate("/")
-    },2000.5)
-    
- }
- else{
+          setTimeout(()=>{
+            navigate("/")
+          },2000.5)
 
-  toast.error(res.payload.data.mesg, {
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    })
+       }
+       else{
 
-    setTimeout(()=>{
-      navigate("/login")
-    },2000.5)
- }
-   }).catch((err)=>{
-    console.log(err)
-  
-   })
-},[])
+        toast.error('Something went wrong', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          })
 
+          setTimeout(()=>{
+            navigate("/login")
+          },2000.5)
+       }
+        
+    }, []);
 
- return (
-  <>
-  <div style={{width:"100%",marginTop:"50px",textAlign:"center"}}>
-    <h3 style={{fontSize:"18px",fontWeight:"700"}}>
-      Please wait...
-    </h3>
-  </div>
-  <ToastContainer/>
-  </>
- )
-}
+  return (
+    <>
+      <div style={{ width: "100%", marginTop: "50px", textAlign: "center" }}>
+        <h3 style={{ fontSize: "18px", fontWeight: "700" }}>Please wait...</h3>
+      </div>
+      <ToastContainer />
+    </>
+  );
+};
 
-export default GoogleCheck
+export default GoogleCheck;

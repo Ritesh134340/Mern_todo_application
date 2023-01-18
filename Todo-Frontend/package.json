@@ -2,7 +2,8 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage":".",
+  
   
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",

@@ -2,8 +2,7 @@ import React ,{useEffect,useState} from 'react'
 import { getCahrtData } from '../Redux/AppReducer/action'
 import { useDispatch } from 'react-redux'
 import Navbar from '../components/Navbar'
-import { Bar, Line,Pie } from 'react-chartjs-2';
-import Chart from "chart.js/auto";
+import {Pie } from 'react-chartjs-2';
 import "../styles/summary.styled.css"
 import {MdPendingActions} from "react-icons/md"
 import {SiProgress} from "react-icons/si"
@@ -45,7 +44,7 @@ const Summary = () => {
             setPending(res.payload.pending)
             setProgress(res.payload.progress)
          })
-    },[])
+    },[dispatch])
 
   return (
     <>

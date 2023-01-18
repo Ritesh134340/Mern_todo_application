@@ -21,7 +21,7 @@ const Login = () => {
   const {REACT_APP_URL}=process.env;
   const [password,setPassword]=useState("")
   const navigate=useNavigate();
-  const {isError,isLoading,token}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading,token:state.AuthReducer.token}})
+  const {isLoading}=useSelector((state)=>{return {isError:state.AuthReducer.isError,isLoading:state.AuthReducer.isLoading,token:state.AuthReducer.token}})
 
  
 
@@ -90,12 +90,13 @@ const Login = () => {
 
   const handleGoogleLogin=(e)=>{
     e.preventDefault()
-    window.open(`${REACT_APP_URL}/auth/google`,'_self');
+      window.open(`${REACT_APP_URL}/auth/google`,'_self');
+
   }
 
  
   return (
-    isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img>  : <LoginWrapper>
+    isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" style={{height:"150px" ,display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img>  : <LoginWrapper>
       <div className="logo-in-log">
       
         <SiTodoist className="logo-sign"/>

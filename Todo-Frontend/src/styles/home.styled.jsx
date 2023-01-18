@@ -159,6 +159,7 @@ export const HomeTopDiv=styled.div`
           .sub-holder{
          margin-bottom:20px;
          height:50px;
+         
          position:absolute;
          left:0.5%;
          right:0.5%;
@@ -183,14 +184,19 @@ export const HomeTopDiv=styled.div`
         overflow-x: hidden;
         width:100%;
         margin-top:20px;
+        
       
      }
      .del-btn{
         user-select: none;
         display:flex;
+        background-color:rgb(242,253,255);
       
+        border-radius:5px;
+        box-sizing:border-box;
         width:100%;
-        padding:5px;
+        padding-left:8px;
+        padding-right:3px;
         justify-content: space-between;
         align-items: center;
         height:33px;

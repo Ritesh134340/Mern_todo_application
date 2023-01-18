@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 
 export const TodoListWrapper=styled.div`
@@ -10,7 +10,7 @@ export const TodoListWrapper=styled.div`
     font-family:sans-serif;
     letter-spacing: 0.6px;
     .main-div{
- 
+
         width:90%;
         margin:auto;
         display: grid;
@@ -25,6 +25,7 @@ export const TodoListWrapper=styled.div`
     .card-div{
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         padding:15px;
+        
         border-radius:8px;
         box-sizing: border-box;
         position:relative;
@@ -198,13 +199,13 @@ export const TodoListWrapper=styled.div`
    }
    @media all and (max-width:600px) and (min-width:279px){
     .main-div{
-        width:88%;
+        width:83%;
         grid-template-columns: repeat(1,1fr);
       
       }
       .card-div{
         padding:13px;
-    
+        
       }
    }
 

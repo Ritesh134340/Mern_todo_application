@@ -71,7 +71,7 @@ const Navbar = () => {
             <div id="third" className="name-with-img">
               <img
                 id="sixth"
-                src={user_image}
+                src={user_image ? user_image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"}
                 alt="profile"
               />
               <h5>

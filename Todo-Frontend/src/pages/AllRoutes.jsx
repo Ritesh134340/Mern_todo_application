@@ -15,9 +15,9 @@ const AllRoutes = () => {
       <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
-      <Route path="/todos/all" element={<PrivateRoute><AllTodos/></PrivateRoute>}/>
+      <Route path="/todos" element={<PrivateRoute><AllTodos/></PrivateRoute>}/>
       <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-      <Route path="/todo/edit/:id" element={<PrivateRoute><EditTodo/></PrivateRoute>}/>
+      <Route path="/todo/:id" element={<PrivateRoute><EditTodo/></PrivateRoute>}/>
       <Route path="/summary" element={<Summary/>}/>
       <Route path="/googlecheck" element={<GoogleCheck/>}/>
     </Routes>

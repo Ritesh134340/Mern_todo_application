@@ -58,7 +58,7 @@ const Navbar = () => {
         </LeftWrapper>
 
         <RightWrapper open={isOpen}>
-          <NavLink to="/todos/all" onClick={() => setIsOpen(!isOpen)} id="first">
+          <NavLink to="/todos" onClick={() => setIsOpen(!isOpen)} id="first">
             TODOS
           </NavLink>
           <NavLink to="/summary" onClick={() => setIsOpen(!isOpen)} id="fifth" >

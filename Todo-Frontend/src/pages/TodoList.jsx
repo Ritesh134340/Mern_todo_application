@@ -136,7 +136,7 @@ const TodoList = ({ data, handleDelete }) => {
                       <button>
                         <Link
                           style={{ color: "white", textDecoration: "none" }}
-                          to={`/todo/edit/${ele._id}`}
+                          to={`/todo/${ele._id}`}
                         >
                           UPDATE
                         </Link>

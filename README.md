@@ -3,6 +3,7 @@
 ## Tech Stack 
 <h4>REACT</h4>
 <h4>REDUX</h4>
+<h4>REACT-REDUX</h4>
 <h4> MONGOOSE</h4>
 <h4>MULTER</h4>
 <h4>PASSPORT JS</h4>

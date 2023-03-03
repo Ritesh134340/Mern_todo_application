@@ -7,6 +7,7 @@
 <h4> MONGOOSE</h4>
 <h4>MULTER</h4>
 <h4>PASSPORT JS</h4>
+<h4>CHART JS</h4>
 <h4>MONGODB</h4>
 <h4>MONGO ATLAS</h4>
 <h4>CSS</h4>

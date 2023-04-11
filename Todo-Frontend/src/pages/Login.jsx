@@ -25,6 +25,7 @@ const Login = () => {
 
  
 
+
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(email && password){
@@ -34,7 +35,7 @@ const Login = () => {
        }
        dispatch(login(payload)).then((res)=>{
       
-       if(res.payload.token){
+       if(res.status===200){
         const user_token=res.payload.token;
         const first_name=res.payload.name
         const last_name=res.payload.title
@@ -69,7 +70,7 @@ const Login = () => {
        
        }
        else{
-        toast.error(res.payload.mesg, {
+        toast.error(res.mesg, {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: true,

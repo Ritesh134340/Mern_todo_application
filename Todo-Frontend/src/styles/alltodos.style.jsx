@@ -10,11 +10,6 @@ export const NavLink=styled(Link)`
 
 export const AllTodoWrapper=styled.div`
     width:100%;
-    height:80vh;
-   .pagination-wrapper{
-    width:85%;
-    margin:auto;
-    border:1px solid transparent;
-    text-align: center;
-   }
+    box-sizing:border-box;
+   
 `

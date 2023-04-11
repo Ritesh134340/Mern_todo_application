@@ -210,51 +210,56 @@ export const TodoListWrapper=styled.div`
    }
 
     .upper-card-div{
+       
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         transition:all 700ms ease;
+      
     }
   
 
    .des-div{
+  
    /* transform:rotateY(180deg); */
     height:100%;
-   padding:15px;
+    overflow:scroll;
+    overflow-x:hidden;
+    padding:5px;
    position: relative;
    height:390px;
    transition:all 700ms ease;
     margin:auto;
-   
-    justify-content: left;
     background-color: white;
-   
-   
-     border-radius:12px;
-     margin:auto;
+     font-size:12px;
+     font-weight:400;
+     border-radius:4px;
      box-sizing:border-box;
+     &::-webkit-scrollbar {
+    display: none;
+     }
+    
      
    }
-   .des-div>h3{
+   .des-div>h4{
     color:gray;
    }
    .back-btn-wrapper{
-    position:absolute;
-    bottom:10px;
+    position:sticky;
+    bottom:0px;
+    margin-top:20px;
     width:100%;
     text-align:center;
-    left:0;
     box-sizing: border-box;
    }
    .back-btn-wrapper>button{
-    padding:5px 25px;
+    padding:3px 10px;
     border:1px solid transparent;
-    font-size:bold;
     color:white;
     border-radius:4px;
     box-sizing: border-box;
     background-color:black;
     cursor:pointer;
-    font-size:17px;
+    font-size:16px;
 
    }
 `

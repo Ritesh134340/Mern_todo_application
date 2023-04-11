@@ -58,23 +58,39 @@ const Signup = () => {
     if(name && last && email && password){
       
        dispatch(signup({formData,config})).then((res)=>{
-        let resp=(res.payload.data.mesg)
-        toast.success(resp,{
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          })
-         setTimeout(()=>{
-          navigate("/login")
-         },2200)
         
-       }).catch((err)=>{
-        console.log(err)
+        if(res.status===200){
+
+          let resp=(res.payload.data.mesg)
+          toast.success(resp,{
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            })
+           setTimeout(()=>{
+            navigate("/login")
+           },2200)
+        }
+        else{
+          toast.error(res.mesg,{
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            })
+        }
+
+       
+        
        })
     }
   }

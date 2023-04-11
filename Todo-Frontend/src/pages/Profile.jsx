@@ -11,7 +11,7 @@ const Profile = () => {
     const dispatch=useDispatch()
     const [show,setShow]=useState(false)
     const User=JSON.parse(localStorage.getItem("profile")) || ""
-    const { REACT_APP_URL } = process.env;
+   
     const user_image = User.image;
     const modalRef=useRef(null)
     const ImageRef=useRef(null)

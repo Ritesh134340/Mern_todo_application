@@ -149,11 +149,11 @@ const TodoList = ({ data, handleDelete }) => {
                   className="des-div"
                   style={{ display: ele._id === dis ? "block" : "none" }}
                 >
-                  <h3>
+                  <h4>
                     {ele.description
                       ? ele.description
                       : "No description is added."}
-                  </h3>
+                  </h4>
                   <div className="back-btn-wrapper">
                     <button onClick={() => handleHideDis(ele._id)}>Back</button>
                   </div>

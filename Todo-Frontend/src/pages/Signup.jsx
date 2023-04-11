@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PreviewImage from '../components/PreviewImage'
 import { SiTodoist } from "react-icons/si";
+import Loading from '../components/Loading';
 
 const Signup = () => {
   const dispatch=useDispatch();
@@ -106,7 +107,7 @@ const Signup = () => {
          <div>
          
         
-        {isLoading ?<img src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif" alt="Loading..." style={{height:"150px",display:"flex",alignItems:"center",justifyContent:"center",margin:"auto",marginTop:"200px"}}></img> :<SignupWrapper>
+        {isLoading ?<Loading/>:<SignupWrapper>
         <div className="logo-in-log">
       
       <SiTodoist className="logo-sign"/>

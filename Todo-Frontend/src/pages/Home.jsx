@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { getTodos, createTodos } from "../Redux/AppReducer/action";
+import { createTodos } from "../Redux/AppReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 import uniqid from "uniqid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+
 import {
-  CategoryWrapper,
+
   HomeBottomDiv,
   HomeTopDiv,
-  HomeWrapper,
+
   MainHomeDiv,
 } from "../styles/home.styled";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 const Home = () => {
   const User = JSON.parse(localStorage.getItem("profile")) || "";
   const token = User.token;
@@ -101,29 +102,8 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {isLoading ? (
-        <div
-          style={{
-            width: "100%",
-            position: "fixed",
-            left: "0px",
-            top: "0px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: "1000",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            height: "100vh",
-          }}
-        >
-          <img
-            src="https://createwebsite.net/wp-content/uploads/2015/09/GD.gif"
-            style={{ display: "block", height: "100px", width: "100px" }}
-            alt="loading"
-          ></img>
-        </div>
-      ) : (
-        <MainHomeDiv>
+  
+       {isLoading ? <Loading/> : <MainHomeDiv>
           <div className="heading-todo">
             <h1>Create New Task List</h1>
           </div>
@@ -222,8 +202,8 @@ const Home = () => {
           </HomeTopDiv>
 
           <ToastContainer />
-        </MainHomeDiv>
-      )}
+        </MainHomeDiv>}
+      
     </>
   );
 };
